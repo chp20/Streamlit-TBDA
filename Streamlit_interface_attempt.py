@@ -100,7 +100,6 @@ right_sock =  'C9:7B:84:76:32:14'
 date_first['desde'] = pd.to_datetime(date_first['desde'])
 date_first['hasta'] = pd.to_datetime(date_first['hasta'])
 
-res1 = get_influx( mac = left_sock , auth = auth, dat = date_first, time_window = '1m') 
+#res1 = get_influx( mac = left_sock , auth = auth, dat = date_first, time_window = '1m') 
 
-st.write(res1)
-    
+   
