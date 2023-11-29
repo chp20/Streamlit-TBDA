@@ -42,64 +42,64 @@ if time_difference > interval_max:
 #plot values imported on a plot and highlight timeplots with a lot of values in them
 
 #allow user to select a time period and zoom in on that period 
-def get_influx(mac, auth, dat, time_window):
-    dat['From'] = dat.desde.dt.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
-    dat['To']   = dat.hasta.dt.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
+# def get_influx(mac, auth, dat, time_window):
+#     dat['From'] = dat.desde.dt.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
+#     dat['To']   = dat.hasta.dt.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
     
-   #|> filter(fn: (r) => r._field == "Gx" or r._field == "Gy" or r._field == "Gz" ) \
+#    #|> filter(fn: (r) => r._field == "Gx" or r._field == "Gy" or r._field == "Gz" ) \
     
-    query =  'from(bucket: "SSL/autogen") \
-          |> range(start: '+ dat.loc[0,'From'] + ', stop: '+ dat.loc[0,'To'] + ') \
-          |> filter(fn: (r) => r["_measurement"] == "sensoria_socks") \
-          |> filter(fn: (r) => r._field == "S0" or r._field == "S1" or r._field == "S2" or r._field == "Gx" or r._field == "Gy" or r._field == "Gz" or r._field == "Ax" or r._field == "Ay" or r._field == "Az"  )\
-          |> filter(fn: (r) => r["mac"] == "' + mac + '") \
-          |> group(columns: ["_field","lat","lng"]) \
-          |> drop(columns: ["table", "_start", "_stop","lat","lng"]) \
-          |> aggregateWindow(every: '+time_window+', fn: mean) \
-          |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value") \
-    '
+#     query =  'from(bucket: "SSL/autogen") \
+#           |> range(start: '+ dat.loc[0,'From'] + ', stop: '+ dat.loc[0,'To'] + ') \
+#           |> filter(fn: (r) => r["_measurement"] == "sensoria_socks") \
+#           |> filter(fn: (r) => r._field == "S0" or r._field == "S1" or r._field == "S2" or r._field == "Gx" or r._field == "Gy" or r._field == "Gz" or r._field == "Ax" or r._field == "Ay" or r._field == "Az"  )\
+#           |> filter(fn: (r) => r["mac"] == "' + mac + '") \
+#           |> group(columns: ["_field","lat","lng"]) \
+#           |> drop(columns: ["table", "_start", "_stop","lat","lng"]) \
+#           |> aggregateWindow(every: '+time_window+', fn: mean) \
+#           |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value") \
+#     '
     
 
-    clnt = InfluxDBClient(url=auth['url'],\
-                token=auth['token'],org=auth['org'], timeout= 5000000)
-    result = clnt.query_api().query(org=auth['org'], query=query)
-    res    = pd.DataFrame()
-    for i in result:
-        rs = []
-        for row in i.records:
-            rs.append(row.values)
-        res= pd.concat([res,pd.DataFrame(rs)],axis=0)
-    if res.shape[0] > 0:
-        res    = res.drop(res.columns[[0]],axis=1)
-        #msk = ( res['Gx'].isnull() & res['Gy'].isnull() & res['Gz'].isnull() )
-        msk = ( res['Gx'].isnull() & res['Gy'].isnull() & res['Gz'].isnull() & res['S0'].isnull() & res['S1'].isnull() & res['S2'].isnull() & res['Ax'].isnull() & res['Ay'].isnull()& res['Az'].isnull())
-        idx = res.index[msk]
-        res = res.drop(index=idx)
-        res = res.drop(res.columns[[0]],axis=1) # drop Table column
-        res.sort_values(by='_time',ascending=True,inplace=True)
-        res.eval("Gmag = sqrt(Gx**2 + Gy**2 + Gz**2)", engine='numexpr', inplace=True)
-        #res.eval("Gmag = sqrt(gx**2 + gy**2 + gz**2)", engine='numexpr', inplace=True)
-        res.reset_index(drop=True,inplace=True)
-        res['desde'] = res['_time'] + pd.Timedelta(hours=-1)
-        pd.options.display.max_columns = 0
-    clnt.close()
-    return({'qry':query,'res':res})
-#
+#     clnt = InfluxDBClient(url=auth['url'],\
+#                 token=auth['token'],org=auth['org'], timeout= 5000000)
+#     result = clnt.query_api().query(org=auth['org'], query=query)
+#     res    = pd.DataFrame()
+#     for i in result:
+#         rs = []
+#         for row in i.records:
+#             rs.append(row.values)
+#         res= pd.concat([res,pd.DataFrame(rs)],axis=0)
+#     if res.shape[0] > 0:
+#         res    = res.drop(res.columns[[0]],axis=1)
+#         #msk = ( res['Gx'].isnull() & res['Gy'].isnull() & res['Gz'].isnull() )
+#         msk = ( res['Gx'].isnull() & res['Gy'].isnull() & res['Gz'].isnull() & res['S0'].isnull() & res['S1'].isnull() & res['S2'].isnull() & res['Ax'].isnull() & res['Ay'].isnull()& res['Az'].isnull())
+#         idx = res.index[msk]
+#         res = res.drop(index=idx)
+#         res = res.drop(res.columns[[0]],axis=1) # drop Table column
+#         res.sort_values(by='_time',ascending=True,inplace=True)
+#         res.eval("Gmag = sqrt(Gx**2 + Gy**2 + Gz**2)", engine='numexpr', inplace=True)
+#         #res.eval("Gmag = sqrt(gx**2 + gy**2 + gz**2)", engine='numexpr', inplace=True)
+#         res.reset_index(drop=True,inplace=True)
+#         res['desde'] = res['_time'] + pd.Timedelta(hours=-1)
+#         pd.options.display.max_columns = 0
+#     clnt.close()
+#     return({'qry':query,'res':res})
+# #
 
-auth = {}
-auth['org']  = 'UPM'    
-auth['token']= 'HcxJ7OEkZJbvoYdXfZPUT6to6xsO-XgVT-u-Mj21U_MiFX4PIsCyFQbGUDwEDICvdko2PnTTUE4XjiQdT4g5Hg=='
-auth['url']  = 'https://apiivm78.etsii.upm.es:8086'
+# auth = {}
+# auth['org']  = 'UPM'    
+# auth['token']= 'HcxJ7OEkZJbvoYdXfZPUT6to6xsO-XgVT-u-Mj21U_MiFX4PIsCyFQbGUDwEDICvdko2PnTTUE4XjiQdT4g5Hg=='
+# auth['url']  = 'https://apiivm78.etsii.upm.es:8086'
 
-#date_first = pd.DataFrame([{'desde':'2023-05-01 00:00:00.000','hasta':'2023-10-08 23:59:59.999','name':'PAT1','set':'S-04'},{'desde':'2023-05-01 00:00:00.000','hasta':'2023-10-08 23:59:59.999','name':'PAT2','set':'S-04'}])
-date_first = pd.DataFrame([{'desde':'2023-01-01 00:00:00.000','hasta':'2023-10-08 23:59:59.999','name':'PAT1','set':'S-04'}])
+# #date_first = pd.DataFrame([{'desde':'2023-05-01 00:00:00.000','hasta':'2023-10-08 23:59:59.999','name':'PAT1','set':'S-04'},{'desde':'2023-05-01 00:00:00.000','hasta':'2023-10-08 23:59:59.999','name':'PAT2','set':'S-04'}])
+# date_first = pd.DataFrame([{'desde':'2023-01-01 00:00:00.000','hasta':'2023-10-08 23:59:59.999','name':'PAT1','set':'S-04'}])
  
-left_sock = 'E0:52:B2:8B:2A:C2'
-right_sock =  'C9:7B:84:76:32:14'
+# left_sock = 'E0:52:B2:8B:2A:C2'
+# right_sock =  'C9:7B:84:76:32:14'
 
-date_first['desde'] = pd.to_datetime(date_first['desde'])
-date_first['hasta'] = pd.to_datetime(date_first['hasta'])
+# date_first['desde'] = pd.to_datetime(date_first['desde'])
+# date_first['hasta'] = pd.to_datetime(date_first['hasta'])
 
-#res1 = get_influx( mac = left_sock , auth = auth, dat = date_first, time_window = '1m') 
+# #res1 = get_influx( mac = left_sock , auth = auth, dat = date_first, time_window = '1m') 
 
    
