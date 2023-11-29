@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 from influxdb_client import InfluxDBClient
-
+import mysql.connector
 #make it more fancy
 col1, col2, col3 = st.columns(3)
 
@@ -38,4 +38,17 @@ time_difference = date_end - date_begin
 if time_difference > interval_max:
     st.write('Its not possible to select more than 11 days.')
 
+connection = mysql.connector.connect(
+    host = "apiivm78.etsii.upm.es", 
+    user = "TBDA",
+    password = "UPM#2324",
+    database="sclerosisTBDA"
+    )
 
+mycursor = connection.cursor()
+mycursor.execute("SHOW TABLES")
+for x in mycursor:
+    st.write(x)
+connection.commit()
+mycursor.close()
+connection.close()
