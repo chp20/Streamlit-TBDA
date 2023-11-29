@@ -73,7 +73,7 @@ def get_influx(mac, auth, dat, time_window):
         res = res.drop(index=idx)
         res = res.drop(res.columns[[0]],axis=1) # drop Table column
         res.sort_values(by='_time',ascending=True,inplace=True)
-        res.eval("Gmag = sqrt(Gx**2 + Gy**2 + Gz**2)", engine='numexpr', inplace=True)
+        #res.eval("Gmag = sqrt(Gx**2 + Gy**2 + Gz**2)", engine='numexpr', inplace=True)
         #res.eval("Gmag = sqrt(gx**2 + gy**2 + gz**2)", engine='numexpr', inplace=True)
         res.reset_index(drop=True,inplace=True)
         res['desde'] = res['_time'] + pd.Timedelta(hours=-1)
