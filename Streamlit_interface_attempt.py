@@ -30,7 +30,7 @@ with col3:
 #create time intervals
 date_begin = dt.datetime.combine(begin_date, begin_time)
 date_end = dt.datetime.combine(Final_date, Final_time)
-interval_max = dt.timedelta(days=)
+interval_max = dt.timedelta(days=10)
 time_difference = date_end - date_begin
 
 #create boolean check for time interval chosen
