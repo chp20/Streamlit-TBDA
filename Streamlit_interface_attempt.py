@@ -35,7 +35,7 @@ time_difference = date_end - date_begin
 
 #create boolean check for time interval chosen
 if time_difference > interval_max:
-    st.write('Its not possible to select more than 10 days.')
+    st.write('Its not possible to select more than 11 days.')
 
 #import values
 #plot values imported on a plot and highlight timeplots with a lot of values in them
