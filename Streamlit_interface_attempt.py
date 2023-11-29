@@ -88,7 +88,7 @@ auth['token']= 'HcxJ7OEkZJbvoYdXfZPUT6to6xsO-XgVT-u-Mj21U_MiFX4PIsCyFQbGUDwEDICv
 auth['url']  = 'https://apiivm78.etsii.upm.es:8086'
 
 #date_first = pd.DataFrame([{'desde':'2023-05-01 00:00:00.000','hasta':'2023-10-08 23:59:59.999','name':'PAT1','set':'S-04'},{'desde':'2023-05-01 00:00:00.000','hasta':'2023-10-08 23:59:59.999','name':'PAT2','set':'S-04'}])
-date_first = pd.DataFrame([{'desde':'2023-01-23 00:00:00.000','hasta':'2023-01-28 23:59:59.999','name':'PAT1','set':'S-04'}])
+date_first = pd.DataFrame([{'desde':'2023-01-01 00:00:00.000','hasta':'2023-01-28 23:59:59.999','name':'PAT1','set':'S-04'}])
  
 left_sock = 'E0:52:B2:8B:2A:C2'
 right_sock =  'C9:7B:84:76:32:14'
