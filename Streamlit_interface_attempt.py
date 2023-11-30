@@ -97,7 +97,7 @@ if time_difference > interval_max:
 # date_first['hasta'] = pd.to_datetime(date_first['hasta'])
 
 # res1 = get_influx( mac = left_sock , auth = auth, dat = date_first, time_window = '1m') 
-st.write(res1)
+#st.write(res1)
 
 
 connection = mysql.connector.connect(
