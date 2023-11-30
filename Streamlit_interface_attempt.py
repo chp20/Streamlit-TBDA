@@ -110,11 +110,23 @@ mycursor = connection.cursor()
 qry = "select * FROM `actividad-G02`"
 mycursor.execute(qry)
 rows = mycursor.fetchall()
+df = pd.DataFrame()
 for x in rows:
     if x[4] > date_begin and x[5] < date_end:
         st.write(x[4])
+        df.append(x)
     else:
-        print('no')
+        st.write('no')
+        
+fig, ax = plt.subplots()
+ax.scatter(df.index, [1] * len(df), marker='o')  # Use a constant y-value of 1 for all points
+ax.set_title('Datetime Values Plot')
+ax.set_xlabel('Date')
+ax.set_ylabel('Constant Y-Value')
+
+# Display the plot in Streamlit
+st.pyplot(fig)
+
 connection.commit()
 mycursor.close()
 connection.close()
