@@ -99,7 +99,6 @@ if time_difference > interval_max:
 # res1 = get_influx( mac = left_sock , auth = auth, dat = date_first, time_window = '1m') 
 #st.write(res1)
 
-
 connection = mysql.connector.connect(
     host = "apiivm78.etsii.upm.es", 
     user = "TBDA",
@@ -108,9 +107,9 @@ connection = mysql.connector.connect(
     )
 
 mycursor = connection.cursor()
-qry = "select * FROM actividad-G02"
-cursor.execute(qry)
-rows = cursor.fetchall()
+qry = "select * FROM `actividad-G02`"
+mycursor.execute(qry)
+rows = mycursor.fetchall()
 for x in rows:
     st.write(x)
 connection.commit()
