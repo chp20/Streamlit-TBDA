@@ -111,7 +111,7 @@ qry = "select * FROM `actividad-G02`"
 mycursor.execute(qry)
 rows = mycursor.fetchall()
 for x in rows:
-    if x[4] > date_begin:
+    if x[4] > date_begin and x[5] < date_end:
         st.write(x[4])
     else:
         print('no')
