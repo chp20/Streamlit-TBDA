@@ -111,7 +111,7 @@ qry = "select * FROM `actividad-G02`"
 mycursor.execute(qry)
 rows = mycursor.fetchall()
 for x in rows:
-    st.write(x)
+    st.write(x[4])
 connection.commit()
 mycursor.close()
 connection.close()
