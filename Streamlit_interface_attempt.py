@@ -108,8 +108,10 @@ connection = mysql.connector.connect(
     )
 
 mycursor = connection.cursor()
-mycursor.execute("SHOW TABLES")
-for x in mycursor:
+qry = "select * FROM actividad-G02"
+cursor.execute(qry)
+rows = cursor.fetchall()
+for x in rows:
     st.write(x)
 connection.commit()
 mycursor.close()
