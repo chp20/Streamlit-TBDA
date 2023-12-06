@@ -5,7 +5,7 @@ import numpy as np
 import datetime as dt
 from influxdb_client import InfluxDBClient
 import mysql.connector
-import matplotlib 
+import matplotlib.pyplot as plt
 #make it more fancy
 col1, col2, col3 = st.columns(3)
 
@@ -123,7 +123,7 @@ for x in rows:
         
 st.write(df)
 check = [dt.datetime(2023, 1, 23, 11, 12, 54),dt.datetime(2023, 1, 23, 11, 13, 14)]
-plot = matplotlib.pyplot.plot_date(check)
+plot = plt.plot_date(check)
 st.pyplot(plot)
 
 
