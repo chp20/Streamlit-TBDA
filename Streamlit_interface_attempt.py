@@ -121,10 +121,12 @@ for x in rows:
     #else:
      #   st.write('no')
         
-st.write(df)
-check = dt.datetime(2023, 1, 23, 11, 12, 54)
-plot = plt.plot_date(check,1)
-st.pyplot(plot)
+check = [dt.datetime(2023, 1, 23, 11, 12, 54), dt.datetime(2023, 1, 23, 11, 13, 14)]
+fig, ax = plt.subplots()
+plot = ax.plot_date(check, [1, 1])
+
+# Pass the Matplotlib figure (fig) to st.pyplot
+st.pyplot(fig)
 
 
 connection.commit()
