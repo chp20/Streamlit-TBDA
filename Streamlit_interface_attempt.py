@@ -115,10 +115,10 @@ rows = mycursor.fetchall()
 df = []
 for x in rows:
     if x[4] > date_begin and x[5] < date_end:
-        st.write(x[4])
+        #st.write(x[4])
         df.append(x)
-    else:
-        st.write('no')
+    #else:
+     #   st.write('no')
         
 st.write(df)
 connection.commit()
