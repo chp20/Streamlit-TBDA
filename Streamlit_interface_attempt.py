@@ -116,7 +116,7 @@ df = []
 for x in rows:
     if x[4] > date_begin and x[5] < date_end:
         #st.write(x[4])
-        df.append(x[4],x[5])
+        df.append(x[4])
     #else:
      #   st.write('no')
         
