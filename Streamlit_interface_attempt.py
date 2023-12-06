@@ -120,7 +120,9 @@ for x in rows:
         df.append((x[4],x[5]))
     #else:
      #   st.write('no')
-        
+
+
+st.write(df)
 check = [dt.datetime(2023, 1, 25, 11, 12, 54), dt.datetime(2023, 1, 23, 11, 13, 14)]
 fig, ax = plt.subplots()
 plot = ax.plot_date(check, [1, 1])
