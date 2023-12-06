@@ -128,7 +128,7 @@ check = []
 for i in df:
     check.append(df[i])
 fig, ax = plt.subplots()
-plot = ax.plot_date(df, np.ones(len(df)))
+plot = ax.plot_date(check, np.ones(len(df)))
 
 # Pass the Matplotlib figure (fig) to st.pyplot
 st.pyplot(fig)
