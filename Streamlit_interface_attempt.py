@@ -116,7 +116,7 @@ df = pd.DataFrame()
 for x in rows:
     if x[4] > date_begin and x[5] < date_end:
         st.write(x[4])
-        df.append(x)
+        df.append(x,ignore_index=True)
     else:
         st.write('no')
         
