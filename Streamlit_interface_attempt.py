@@ -122,7 +122,7 @@ for x in rows:
      #   st.write('no')
         
 st.write(df)
-check = [datetime.datetime(2023, 1, 23, 11, 12, 54),datetime.datetime(2023, 1, 23, 11, 13, 14)]
+check = [dt.datetime(2023, 1, 23, 11, 12, 54),dt.datetime(2023, 1, 23, 11, 13, 14)]
 plot = matplotlib.pyplot.plot_date(check)
 st.pyplot(plot)
 
