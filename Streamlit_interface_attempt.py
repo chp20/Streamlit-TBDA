@@ -126,7 +126,7 @@ st.write(df)
 i = 0
 check = []
 for i in df:
-    check.append(df[i])
+    check.append(i)
 fig, ax = plt.subplots()
 plot = ax.plot_date(check, np.ones(len(df)))
 
