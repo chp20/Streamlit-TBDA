@@ -125,11 +125,10 @@ for x in rows:
 st.write(df)
 i = 0
 check = []
-while i < 10:
+for i in df
     check.append(df[i])
-    i+=1
 fig, ax = plt.subplots()
-plot = ax.plot_date(check, np.ones(len(check)))
+plot = ax.plot_date(df, np.ones(len(df)))
 
 # Pass the Matplotlib figure (fig) to st.pyplot
 st.pyplot(fig)
