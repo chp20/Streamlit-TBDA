@@ -107,12 +107,12 @@ connection = mysql.connector.connect(
     )
 
 
-df = []
+
 mycursor = connection.cursor()
 qry = "select * FROM `actividad-G02`"
 mycursor.execute(qry)
 rows = mycursor.fetchall()
-df = pd.DataFrame()
+df = []
 for x in rows:
     if x[4] > date_begin and x[5] < date_end:
         st.write(x[4])
