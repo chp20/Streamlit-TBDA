@@ -3,3 +3,4 @@ pandas
 numpy 
 influxdb_client
 mysql.connector
+matplotlib
