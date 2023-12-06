@@ -112,7 +112,7 @@ mycursor = connection.cursor()
 qry = "select * FROM `actividad-G02`"
 mycursor.execute(qry)
 rows = mycursor.fetchall()
-df = []
+df = pd.array()
 for x in rows:
     if x[4] > date_begin and x[5] < date_end:
         st.write(x[4])
