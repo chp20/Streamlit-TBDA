@@ -125,7 +125,7 @@ for x in rows:
 st.write(df)
 i = 0
 check = []
-for i in df
+for i in df:
     check.append(df[i])
 fig, ax = plt.subplots()
 plot = ax.plot_date(df, np.ones(len(df)))
