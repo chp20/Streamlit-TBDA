@@ -107,7 +107,7 @@ connection = mysql.connector.connect(
     )
 
 
-df = np.array()
+df = np.array([])
 mycursor = connection.cursor()
 qry = "select * FROM `actividad-G02`"
 mycursor.execute(qry)
