@@ -120,7 +120,7 @@ for x in rows:
     #else:
      #   st.write('no')
         
-st.write(type(df))
+st.write(type(df[0]))
 connection.commit()
 mycursor.close()
 connection.close()
