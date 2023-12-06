@@ -120,15 +120,7 @@ for x in rows:
     else:
         st.write('no')
         
-fig, ax = plt.subplots()
-ax.scatter(df.index, [1] * len(df), marker='o')  # Use a constant y-value of 1 for all points
-ax.set_title('Datetime Values Plot')
-ax.set_xlabel('Date')
-ax.set_ylabel('Constant Y-Value')
-
-# Display the plot in Streamlit
-st.pyplot(fig)
-
+st.write(df)
 connection.commit()
 mycursor.close()
 connection.close()
