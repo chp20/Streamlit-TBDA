@@ -107,7 +107,7 @@ connection = mysql.connector.connect(
     )
 
 
-df = np.array([])
+df = []
 mycursor = connection.cursor()
 qry = "select * FROM `actividad-G02`"
 mycursor.execute(qry)
@@ -116,7 +116,7 @@ df = pd.DataFrame()
 for x in rows:
     if x[4] > date_begin and x[5] < date_end:
         st.write(x[4])
-        df.append(x,ignore_index=True)
+        df.append(x)
     else:
         st.write('no')
         
