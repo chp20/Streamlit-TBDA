@@ -129,7 +129,7 @@ for i in df:
     check.append(i)
 fig, ax = plt.subplots()
 plot = ax.plot_date(check, np.ones(len(df)))
-
+plt.xticks(fontsize = 10)
 # Pass the Matplotlib figure (fig) to st.pyplot
 st.pyplot(fig)
 
