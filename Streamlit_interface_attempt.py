@@ -200,7 +200,13 @@ else:
     #create boolean check for time interval chosen
     if time_difference > interval_max:
         st.write('Its not possible to select more than 11 days.')
-    
+            
+    connection = mysql.connector.connect(
+            host = "apiivm78.etsii.upm.es", 
+            user = "TBDA",
+            password = "UPM#2324",
+            database="sclerosisTBDA"
+           )
     
     mycursor = connection.cursor()
     qry = "select * FROM `actividad-G02`"
