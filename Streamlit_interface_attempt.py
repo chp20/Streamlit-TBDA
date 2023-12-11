@@ -137,3 +137,16 @@ st.pyplot(fig)
 connection.commit()
 mycursor.close()
 connection.close()
+boolean_decision = st.checkbox('Allow me to enter final dates')
+if boolean_decision:
+        with st.expander('Begin date'):
+            final_begin_date = st.date_input('Give your begin date:')
+            final_begin_time = st.time_input('Begin time:')    
+        with st.expander('begin date'):
+            final_end_date = st.date_input('give your end date')
+            final_end_time = st.time_input('give your end time')
+        final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
+        final_date_end = dt.datetime.combine(final_end_date, final_end_time)
+            
+
+    
