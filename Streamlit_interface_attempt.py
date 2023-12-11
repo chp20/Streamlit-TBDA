@@ -7,7 +7,7 @@ from influxdb_client import InfluxDBClient
 import mysql.connector
 import matplotlib.pyplot as plt
 #make it more fancy
-col1, col2, col3 = st.columns(3)
+#col1, col2, col3 = st.columns(3)
 
 #create time inputs
 # with col1:
@@ -171,7 +171,7 @@ if boolean_decision:
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
-
+    col1, col2, col3 = st.columns(3)
     with col1:
         with st.expander('Begin date'):
             begin_date = st.date_input('Give your begin date:')
@@ -200,8 +200,8 @@ else:
     #create boolean check for time interval chosen
     if time_difference > interval_max:
         st.write('Its not possible to select more than 11 days.')
-
-
+    
+        
     
     i = 0
     check = []
