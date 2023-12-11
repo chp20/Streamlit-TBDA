@@ -171,7 +171,7 @@ if boolean_decision:
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
-     i = 0
+    i = 0
     check = []
     for i in df:
         check.append(i)
