@@ -100,26 +100,26 @@ import matplotlib.pyplot as plt
 # res1 = get_influx( mac = left_sock , auth = auth, dat = date_first, time_window = '1m') 
 #st.write(res1)
 
-connection = mysql.connector.connect(
-    host = "apiivm78.etsii.upm.es", 
-    user = "TBDA",
-    password = "UPM#2324",
-    database="sclerosisTBDA"
-    )
+# connection = mysql.connector.connect(
+#     host = "apiivm78.etsii.upm.es", 
+#     user = "TBDA",
+#     password = "UPM#2324",
+#     database="sclerosisTBDA"
+#     )
 
 
 
-mycursor = connection.cursor()
-qry = "select * FROM `actividad-G02`"
-mycursor.execute(qry)
-rows = mycursor.fetchall()
-df = []
-for x in rows:
-    if x[4] > date_begin and x[5] < date_end:
-        #st.write(x[4])
-        df.append((x[4],x[5]))
-    #else:
-     #   st.write('no')
+# mycursor = connection.cursor()
+# qry = "select * FROM `actividad-G02`"
+# mycursor.execute(qry)
+# rows = mycursor.fetchall()
+# df = []
+# for x in rows:
+#     if x[4] > date_begin and x[5] < date_end:
+#         #st.write(x[4])
+#         df.append((x[4],x[5]))
+#     #else:
+#      #   st.write('no')
 
 
 # st.write(df)
@@ -134,9 +134,9 @@ for x in rows:
 # st.pyplot(fig)
 
 
-connection.commit()
-mycursor.close()
-connection.close()
+# connection.commit()
+# mycursor.close()
+# connection.close()
 # boolean_decision = st.checkbox('Allow me to enter final dates')
 # if boolean_decision:
 #         with st.expander('Begin date'):
@@ -201,8 +201,22 @@ else:
     if time_difference > interval_max:
         st.write('Its not possible to select more than 11 days.')
     
-        
     
+    mycursor = connection.cursor()
+    qry = "select * FROM `actividad-G02`"
+    mycursor.execute(qry)
+    rows = mycursor.fetchall()
+    df = []
+    for x in rows:
+        if x[4] > date_begin and x[5] < date_end:
+            #st.write(x[4])
+            df.append((x[4],x[5]))
+    
+    connection.commit()
+    mycursor.close()
+    connection.close()
+    
+        
     i = 0
     check = []
     for i in df:
