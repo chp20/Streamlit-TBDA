@@ -122,16 +122,16 @@ for x in rows:
      #   st.write('no')
 
 
-st.write(df)
-i = 0
-check = []
-for i in df:
-    check.append(i)
-fig, ax = plt.subplots()
-plot = ax.plot_date(check, np.ones(len(df)))
-plt.xticks(fontsize = 5)
-# Pass the Matplotlib figure (fig) to st.pyplot
-st.pyplot(fig)
+# st.write(df)
+# i = 0
+# check = []
+# for i in df:
+#     check.append(i)
+# fig, ax = plt.subplots()
+# plot = ax.plot_date(check, np.ones(len(df)))
+# plt.xticks(fontsize = 5)
+# # Pass the Matplotlib figure (fig) to st.pyplot
+# st.pyplot(fig)
 
 
 connection.commit()
@@ -171,7 +171,16 @@ if boolean_decision:
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
-
+     i = 0
+    check = []
+    for i in df:
+        check.append(i)
+    fig, ax = plt.subplots()
+    plot = ax.plot_date(check, np.ones(len(df)))
+    plt.xticks(fontsize=5)
+    
+    # Pass the Matplotlib figure (fig) to st.pyplot
+    st.pyplot(fig)
 # ... (your existing code)
 
 
