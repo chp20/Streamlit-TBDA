@@ -137,16 +137,43 @@ st.pyplot(fig)
 connection.commit()
 mycursor.close()
 connection.close()
-boolean_decision = st.checkbox('Allow me to enter final dates')
-if boolean_decision:
-        with st.expander('Begin date'):
-            final_begin_date = st.date_input('Give your begin date:')
-            final_begin_time = st.time_input('Begin time:')    
-        with st.expander('begin date'):
-            final_end_date = st.date_input('give your end date')
-            final_end_time = st.time_input('give your end time')
-        final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
-        final_date_end = dt.datetime.combine(final_end_date, final_end_time)
+# boolean_decision = st.checkbox('Allow me to enter final dates')
+# if boolean_decision:
+#         with st.expander('Begin date'):
+#             final_begin_date = st.date_input('Give your begin date:')
+#             final_begin_time = st.time_input('Begin time:')    
+#         with st.expander('begin date'):
+#             final_end_date = st.date_input('give your end date')
+#             final_end_time = st.time_input('give your end time')
+#         final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
+#         final_date_end = dt.datetime.combine(final_end_date, final_end_time)
             
+# ... (your existing code)
 
+boolean_decision = st.checkbox('Allow me to enter final dates')
+
+if boolean_decision:
+    # If checkbox is checked, show the final date inputs
+    final_col1, final_col2 = st.columns(2)
     
+    with final_col1:
+        with st.expander('Begin date'):
+            final_begin_date = st.date_input('Give your begin date:', key="final_begin_date")
+            final_begin_time = st.time_input('Begin time:', key="final_begin_time")
+            
+    with final_col2:
+        with st.expander('Final date'):
+            final_end_date = st.date_input('Give your final date:', key="final_end_date")
+            final_end_time = st.time_input('Final time:', key="final_end_time")
+    
+    final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
+    final_date_end = dt.datetime.combine(final_end_date, final_end_time)
+else:
+    # If checkbox is not checked, create an empty placeholder
+    placeholder = st.empty()
+
+# ... (your existing code)
+
+
+
+
