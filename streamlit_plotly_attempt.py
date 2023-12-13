@@ -5,8 +5,6 @@ import mysql.connector
 import plotly.express as px
 
 boolean_decision = st.checkbox('Allow me to enter final dates')
-date_begin = dt.now()
-date_end = dt.now()
 
 if boolean_decision:
     # If checkbox is checked, show the final date inputs
@@ -78,13 +76,12 @@ else:
 
     # Create a DataFrame from the list
     df = pd.DataFrame(data)
-
-    # Plotting with Plotly Express
-    fig = px.scatter(df, x='datetime', y='time')  # Specify the y-axis column
-
-    # Display the Plotly Express chart
-    st.plotly_chart(fig)
-
     connection.commit()
     mycursor.close()
     connection.close()
+
+    # Plotting with Plotly Express
+    fig = px.scatter(df, x='datetime', y=None)
+
+    # Display the Plotly Express chart
+    st.plotly_chart(fig)
