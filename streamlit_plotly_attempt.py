@@ -71,6 +71,7 @@ else:
 
     for x in rows:
         if date_begin <= x[4] <= date_end:
+            # Append a new row to the DataFrame
             df = df.append({'date': x[4], 'time': x[5]}, ignore_index=True)
 
     connection.commit()
