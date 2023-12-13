@@ -76,12 +76,19 @@ else:
 
     # Create a DataFrame from the list
     df = pd.DataFrame(data)
+
+    # Create a unitless y-axis column
+    df['unitless_y'] = range(1, len(df) + 1)
+
     connection.commit()
     mycursor.close()
     connection.close()
 
     # Plotting with Plotly Express
-    fig = px.scatter(df, x='datetime', y=None)
+    fig = px.scatter(df, x='datetime', y='unitless_y')
+
+    # Remove y-axis label (optional)
+    fig.update_yaxes(title_text='')
 
     # Display the Plotly Express chart
     st.plotly_chart(fig)
