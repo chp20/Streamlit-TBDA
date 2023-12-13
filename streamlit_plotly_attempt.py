@@ -66,22 +66,22 @@ else:
     qry = "select * FROM `actividad-G02`"
     mycursor.execute(qry)
     rows = mycursor.fetchall()
-    
+
     data = []
 
     for x in rows:
         if date_begin <= x[4] <= date_end:
-        # Append a new dictionary to the list
-            data.append({'date': x[4], 'time': x[5]})
+            # Append a new dictionary to the list
+            data.append({'datetime': x[4], 'time': x[5]})
 
-# Create a DataFrame from the list
+    # Create a DataFrame from the list
     df = pd.DataFrame(data)
     connection.commit()
     mycursor.close()
     connection.close()
 
     # Plotting with Plotly Express
-    fig = px.scatter(df, x = 'datetime', y = 'none')
+    fig = px.scatter(df, x='datetime', y=None)
 
     # Display the Plotly Express chart
     st.plotly_chart(fig)
