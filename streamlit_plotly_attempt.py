@@ -76,12 +76,13 @@ else:
 
     # Create a DataFrame from the list
     df = pd.DataFrame(data)
-    connection.commit()
-    mycursor.close()
-    connection.close()
 
     # Plotting with Plotly Express
-    fig = px.scatter(df, x='datetime', y=None)
+    fig = px.scatter(df, x='datetime', y='time')  # Specify the y-axis column
 
     # Display the Plotly Express chart
     st.plotly_chart(fig)
+
+    connection.commit()
+    mycursor.close()
+    connection.close()
