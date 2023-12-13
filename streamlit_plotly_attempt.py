@@ -5,6 +5,8 @@ import mysql.connector
 import plotly.express as px
 
 boolean_decision = st.checkbox('Allow me to enter final dates')
+date_begin = dt.datetime.now()
+date_end = dt.datetime.now()
 
 if boolean_decision:
     # If checkbox is checked, show the final date inputs
