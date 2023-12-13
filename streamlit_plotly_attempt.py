@@ -81,7 +81,7 @@ else:
     connection.close()
 
     # Plotting with Plotly Express
-    fig = px.line(df, x='time', y='date', title='Your Plot Title')
+    fig = px.scatter(df, x = 'datetime', y = 'none')
 
     # Display the Plotly Express chart
     st.plotly_chart(fig)
