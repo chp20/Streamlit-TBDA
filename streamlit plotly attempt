@@ -79,14 +79,8 @@ else:
     mycursor.close()
     connection.close()
     
-        
-    i = 0
-    check = []
-    for i in df:
-        check.append(i)
-    fig, ax = plt.subplots()
-    plot = ax.plot_date(check, np.ones(len(df)))
-    plt.xticks(fontsize=5)
+   fig = plotly.express.line(df, x='date',y='time')
+   
     
     # Pass the Matplotlib figure (fig) to st.pyplot
-    st.pyplot(fig)
+    st.plotly_chart(fig)
