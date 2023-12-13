@@ -4,3 +4,4 @@ numpy
 influxdb_client
 mysql.connector
 matplotlib
+plotly.express
