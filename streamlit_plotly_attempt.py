@@ -23,25 +23,6 @@ if boolean_decision:
     final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
 
-    # final_data = []
-    # connection = mysql.connector.connect(
-    #     host="apiivm78.etsii.upm.es",
-    #     user="TBDA",
-    #     password="UPM#2324",
-    #     database="sclerosisTBDA"
-    # )
-
-    # mycursor = connection.cursor()
-    # qry = "select * FROM `actividad-G02`"
-    # mycursor.execute(qry)
-    # rows = mycursor.fetchall()
-
-    # for element in rows:
-    #     final_data.append(element)
-    # mycursor.close()
-    # connection.close()
-    # st.write(final_data)
-    
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
