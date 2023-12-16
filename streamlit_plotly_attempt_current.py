@@ -23,19 +23,6 @@ if boolean_decision:
     final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
 
-    data_uno = [
-        {"Start": dt.datetime(2023, 1, 25, 10, 15, 1), "Finish": dt.datetime(2023, 1, 25, 10, 17, 30), "Final_Value": 0.7},
-        {"Start": dt.datetime(2023, 1, 25, 10, 18, 20), "Finish": dt.datetime(2023, 1, 25, 10, 20, 40), "Final_Value": 0.75},
-    ]
-
-    # Create a DataFrame from data_uno with the corrected variable name
-    df_final_values = pd.DataFrame(data_uno, columns=['Start', 'Finish', 'Final_Value'])
-
-    # Plotting Gantt chart with color denoting final values
-    fig2 = px.timeline(df_final_values, x_start="Start", x_end="Finish", y="Final_Value", color="Final_Value",
-                       color_continuous_scale=[(0, "red"), (1, "green")])
-    fig2.update_layout(title_text='Gantt Chart with Final Values')
-    st.plotly_chart(fig2)
 
     connection = mysql.connector.connect(
         host="apiivm78.etsii.upm.es",
@@ -68,15 +55,7 @@ if boolean_decision:
     fig2.update_layout(title_text='Gantt Chart with Final Values')
     st.plotly_chart(fig2)
 
-    example_data = []
-    counter = 0
-    while counter < len(data_uno):
-        example_data.append({"Start": data_uno[counter]["Start"], "Finish": data_uno[counter]["Finish"], "Final_Value": data_uno[counter]["Final_Value"]})
-        counter += 1
-    example_data_carrier = pd.DataFrame(example_data)
-
-    fig4 = px.timeline(example_data_carrier, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
-    st.plotly_chart(fig4)
+   
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
