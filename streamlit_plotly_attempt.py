@@ -31,6 +31,25 @@ if boolean_decision:
     fig2 = px.timeline(data, x_start="Start", x_end="Finish", y="Task")
     fig2.update_layout(title_text='Gantt Chart with Links')
     st.plotly_chart(fig2)
+    
+    connection = mysql.connector.connect(
+        host="apiivm78.etsii.upm.es",
+        user="TBDA",
+        password="UPM#2324",
+        database="sclerosisTBDA"
+    )
+    checkdata = []
+    mycursor = connection.cursor()
+    qry = "select * FROM `actividad-G02`"
+    mycursor.execute(qry)
+    rows = mycursor.fetchall()
+    
+    for x in rows:
+        checkdata.append(x)
+    cursor.close()
+    connection.close()
+    
+    
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
