@@ -23,15 +23,16 @@ if boolean_decision:
     final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
    
-    data1 = [
-    dict("datetime.datetime(2023, 1, 25, 10, 15, 1)", "datetime.datetime(2023, 1, 25, 10, 17, 30)", 0.7),
-    dict( "datetime.datetime(2023, 1, 25, 10, 18, 20)", "datetime.datetime(2023, 1, 25, 10, 20, 40)", 0.75),
-    dict( "datetime.datetime(2023, 1, 25, 10, 22, 5)", "datetime.datetime(2023, 1, 25, 10, 23, 15)", 0.88),
-    dict( "datetime.datetime(2023, 1, 25, 10, 23, 30)", "datetime.datetime(2023, 1, 25, 10, 25, 10)", 0.8),
-    dict( "datetime.datetime(2023, 1, 25, 10, 27, 12)", "datetime.datetime(2023, 1, 25, 10, 28, 19)", 0.74),
-    dict( "datetime.datetime(2023, 1, 25, 10, 29, 44)", "datetime.datetime(2023, 1, 25, 10, 33, 11)", 0.69),
-    dict( "datetime.datetime(2023, 1, 25, 10, 35, 25)", "datetime.datetime(2023, 1, 25, 10, 38, 55)", 0.6),
-]
+     data1 = [
+        {"Start": dt.datetime(2023, 1, 25, 10, 15, 1), "Finish": dt.datetime(2023, 1, 25, 10, 17, 30), "Final_Value": 0.7},
+        {"Start": dt.datetime(2023, 1, 25, 10, 18, 20), "Finish": dt.datetime(2023, 1, 25, 10, 20, 40), "Final_Value": 0.75},
+        {"Start": dt.datetime(2023, 1, 25, 10, 22, 5), "Finish": dt.datetime(2023, 1, 25, 10, 23, 15), "Final_Value": 0.88},
+        {"Start": dt.datetime(2023, 1, 25, 10, 23, 30), "Finish": dt.datetime(2023, 1, 25, 10, 25, 10), "Final_Value": 0.8},
+        {"Start": dt.datetime(2023, 1, 25, 10, 27, 12), "Finish": dt.datetime(2023, 1, 25, 10, 28, 19), "Final_Value": 0.74},
+        {"Start": dt.datetime(2023, 1, 25, 10, 29, 44), "Finish": dt.datetime(2023, 1, 25, 10, 33, 11), "Final_Value": 0.69},
+        {"Start": dt.datetime(2023, 1, 25, 10, 35, 25), "Finish": dt.datetime(2023, 1, 25, 10, 38, 55), "Final_Value": 0.6},
+    ]
+
  
 
     data = [
@@ -39,7 +40,7 @@ if boolean_decision:
     dict(Task="Task 2", Start='2023-01-05', Finish='2023-01-15'),
     # Add more tasks as needed
 ]
-    fig2 = px.timeline(data, x_start="Start", x_end="Finish", y="Task")
+    fig2 = px.timeline(data1, x_start="Start", x_end="Finish", y="Task")
     fig2.update_layout(title_text='Gantt Chart with Links')
     st.plotly_chart(fig2)
     
