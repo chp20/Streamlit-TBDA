@@ -46,7 +46,7 @@ if boolean_decision:
     
     for x in rows:
         checkdata.append(x)
-    cursor.close()
+    mycursor.close()
     connection.close()
     st.write(checkdata)
     
