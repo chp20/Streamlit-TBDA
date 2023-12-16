@@ -32,7 +32,7 @@ if boolean_decision:
     fig2.update_layout(title_text='Gantt Chart with Links')
     st.plotly_chart(fig2)
     sampledata = []
-     connection = mysql.connector.connect(
+    connection = mysql.connector.connect(
         host="apiivm78.etsii.upm.es",
         user="TBDA",
         password="UPM#2324",
