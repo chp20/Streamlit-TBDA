@@ -47,6 +47,7 @@ if boolean_decision:
         password="UPM#2324",
         database="sclerosisTBDA"
     )
+    
     checkdata = []
     mycursor = connection.cursor()
     qry = "select * FROM `Data_sample_Christian`"
