@@ -63,11 +63,16 @@ if boolean_decision:
     x = dt.datetime(2023, 1, 25, 10, 15, 1)
     z = dt.datetime(2023, 1, 25, 10, 17, 30)
     v = 0.7
-    example_data.append({"Start": data_uno[0][1], "Finish": data_uno[0][2], "Final_Value": data_uno[0][3]})
-    st.write(example_data)
+    #example_data.append({"Start": data_uno[0][1], "Finish": data_uno[0][2], "Final_Value": data_uno[0][3]})
+    #st.write(example_data)
 
+    counter = 0
+    While counter < len(example):
+        example_data.append({"Start": data_uno[counter][1], "Finish": data_uno[counter][2], "Final_Value": data_uno[counter][3]})
+    
     example_data_carrier = pd.DataFrame(example_data)
-    fig = px.timeline(example_data, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
+    
+    fig = px.timeline(example_data_carrier, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
     st.plotly_chart(fig)
 else:
     # If checkbox is not checked, create an empty placeholder
