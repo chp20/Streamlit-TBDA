@@ -40,7 +40,7 @@ if boolean_decision:
     )
     checkdata = []
     mycursor = connection.cursor()
-    qry = "select * FROM `actividad-G02`"
+    qry = "select * FROM `Data_sample_Christian`"
     mycursor.execute(qry)
     rows = mycursor.fetchall()
     
@@ -48,7 +48,7 @@ if boolean_decision:
         checkdata.append(x)
     cursor.close()
     connection.close()
-    
+    st.write(checkdata)
     
 else:
     # If checkbox is not checked, create an empty placeholder
