@@ -3,7 +3,6 @@ import pandas as pd
 import datetime as dt
 import mysql.connector
 import plotly.express as px
-import plotly.graph_objects as go
 
 boolean_decision = st.checkbox('Allow me to enter final dates')
 
@@ -23,7 +22,7 @@ if boolean_decision:
 
     final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
-
+   
     data = [
         dict(Task="Task 1", Start='2023-01-10', Finish='2023-01-15', Value=0.7),
         dict(Task="Task 2", Start='2023-01-05', Finish='2023-01-10', Value=0.5),
@@ -32,54 +31,6 @@ if boolean_decision:
     fig2 = px.timeline(data, x_start="Start", x_end="Finish", y="Task")
     fig2.update_layout(title_text='Gantt Chart with Links')
     st.plotly_chart(fig2)
-    sampledata = []
-    connection = mysql.connector.connect(
-        host="apiivm78.etsii.upm.es",
-        user="TBDA",
-        password="UPM#2324",
-        database="sclerosisTBDA"
-    )
-
-    mycursor = connection.cursor()
-    qry = "select * FROM `Data_sample_Christian`"
-    mycursor.execute(qry)
-    rows = mycursor.fetchall()
-    for i in rows:
-        sampledata.append(i)
-    mycursor.close()
-    connection.close()
-    st.write(sampledata)
-
-    fig3 = go.Figure()
-
-    for i, task_data in enumerate(sampledata):
-        task_name = f"Task {i}"
-        if len(task_data) == 4:
-            start_time, end_time, value1, value2 = task_data
-        else:
-            # Handle the case where task_data does not have four elements
-            st.warning(f"Invalid data format for Task {i}")
-            continue
-
-        fig3.add_trace(go.Bar(
-            x=[(start_time + end_time) / 2],
-            y=[task_name],
-            orientation='h',
-            base=start_time,
-            width=(end_time - start_time),
-            marker=dict(color=f'rgba(0, 0, 255, {value1 + value2})'),
-            text=f"Value: {value1}, Value2: {value2}",
-            hoverinfo='text',
-        ))
-
-    # Update layout
-    fig3.update_layout(
-        title='Gantt Chart with Values',
-        xaxis=dict(title='Time'),
-        yaxis=dict(title='Task'),
-    )
-    px.plotly_chart(fig3)
-
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
@@ -154,3 +105,5 @@ else:
 
         # Display the Plotly Express chart
         st.plotly_chart(fig)
+    
+    
