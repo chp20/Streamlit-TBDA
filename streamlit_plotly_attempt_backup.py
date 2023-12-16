@@ -57,7 +57,6 @@ if boolean_decision:
         checkdata.append(x)
     mycursor.close()
     connection.close()
-    st.write(checkdata[0][1], checkdata[0][2], checkdata[0][3])
     
     example_data = []
     x = dt.datetime(2023, 1, 25, 10, 15, 1)
@@ -69,7 +68,6 @@ if boolean_decision:
     while counter < len(data_uno):
         example_data.append({"Start": data_uno[counter]["Start"], "Finish": data_uno[counter]["Finish"], "Final_Value": data_uno[counter]["Final_Value"]})
         counter += 1
-        st.write(counter)
     example_data_carrier = pd.DataFrame(example_data)
     
     fig4 = px.timeline(example_data_carrier, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
