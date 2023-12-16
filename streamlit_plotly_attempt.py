@@ -33,17 +33,14 @@ if boolean_decision:
        {"Start": dt.datetime(2023, 1, 25, 10, 35, 25), "Finish": dt.datetime(2023, 1, 25, 10, 38, 55), "Final_Value": 0.6},
     ]
 
- 
+    # Create a DataFrame from data1
+    df_final_values = pd.DataFrame(data1, columns=['Start', 'Finish', 'Final_Value'])
 
-    data = [
-    dict(Task="Task 1", Start='2023-01-01', Finish='2023-01-10'),
-    dict(Task="Task 2", Start='2023-01-05', Finish='2023-01-15'),
-    # Add more tasks as needed
-]
-    fig2 = px.timeline(data1, x_start="Start", x_end="Finish", y="Task")
-    fig2.update_layout(title_text='Gantt Chart with Links')
+    # Plotting Gantt chart with color denoting final values
+    fig2 = px.timeline(df_final_values, x_start="Start", x_end="Finish", y="Final_Value")
+    fig2.update_layout(title_text='Gantt Chart with Final Values')
     st.plotly_chart(fig2)
-    
+
     connection = mysql.connector.connect(
         host="apiivm78.etsii.upm.es",
         user="TBDA",
@@ -61,7 +58,6 @@ if boolean_decision:
     mycursor.close()
     connection.close()
 
-    
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
@@ -136,5 +132,3 @@ else:
 
         # Display the Plotly Express chart
         st.plotly_chart(fig)
-    
-    
