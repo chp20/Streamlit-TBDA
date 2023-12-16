@@ -25,8 +25,8 @@ if boolean_decision:
 
     data_uno = [
         {"Start": dt.datetime(2023, 1, 25, 10, 15, 1), "Finish": dt.datetime(2023, 1, 25, 10, 17, 30), "Final_Value": 0.7},
-        {"Start": dt.datetime(2023, 1, 25, 10, 18, 20), "Finish": dt.datetime(2023, 1, 25, 10, 20, 40), "Final_Value": 0.75},
-    #     {"Start": dt.datetime(2023, 1, 25, 10, 22, 5), "Finish": dt.datetime(2023, 1, 25, 10, 23, 15), "Final_Value": 0.88},]
+        {"Start": dt.datetime(2023, 1, 25, 10, 18, 20), "Finish": dt.datetime(2023, 1, 25, 10, 20, 40), "Final_Value": 0.75},]
+    #     {"Start": dt.datetime(2023, 1, 25, 10, 22, 5), "Finish": dt.datetime(2023, 1, 25, 10, 23, 15), "Final_Value": 0.88},
     #     {"Start": dt.datetime(2023, 1, 25, 10, 23, 30), "Finish": dt.datetime(2023, 1, 25, 10, 25, 10), "Final_Value": 0.8},
     #     {"Start": dt.datetime(2023, 1, 25, 10, 27, 12), "Finish": dt.datetime(2023, 1, 25, 10, 28, 19), "Final_Value": 0.74},
     #     {"Start": dt.datetime(2023, 1, 25, 10, 29, 44), "Finish": dt.datetime(2023, 1, 25, 10, 33, 11), "Final_Value": 0.69},
