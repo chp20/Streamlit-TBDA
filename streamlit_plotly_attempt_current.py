@@ -22,7 +22,7 @@ if boolean_decision:
 
     final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
-   
+
     data_uno = [
         {"Start": dt.datetime(2023, 1, 25, 10, 15, 1), "Finish": dt.datetime(2023, 1, 25, 10, 17, 30), "Final_Value": 0.7},
         {"Start": dt.datetime(2023, 1, 25, 10, 18, 20), "Finish": dt.datetime(2023, 1, 25, 10, 20, 40), "Final_Value": 0.75},
@@ -47,13 +47,13 @@ if boolean_decision:
         password="UPM#2324",
         database="sclerosisTBDA"
     )
-    
+
     checkdata = []
     mycursor = connection.cursor()
     qry = "select * FROM `Data_sample_Christian`"
     mycursor.execute(qry)
     rows = mycursor.fetchall()
-    
+
     for x in rows:
         checkdata.append(x)
     mycursor.close()
@@ -63,17 +63,17 @@ if boolean_decision:
     ticker = 0
     checkdata_carrier = []
     while ticker < len(checkdata):
-        checkdata_carrier.append({"Start": data_uno[ticker][1], "Finish": data_uno[ticker][2], "Final_Value": data_uno[ticker][3]})
+        checkdata_carrier.append({"Start": data_uno[ticker]["Start"], "Finish": data_uno[ticker]["Finish"], "Final_Value": data_uno[ticker]["Final_Value"]})
         ticker += 1
     st.write(checkdata_carrier)
-    
+
     example_data = []
     counter = 0
     while counter < len(data_uno):
         example_data.append({"Start": data_uno[counter]["Start"], "Finish": data_uno[counter]["Finish"], "Final_Value": data_uno[counter]["Final_Value"]})
         counter += 1
     example_data_carrier = pd.DataFrame(example_data)
-    
+
     fig4 = px.timeline(example_data_carrier, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
     st.plotly_chart(fig4)
     st.write(example_data_carrier)
@@ -107,8 +107,8 @@ else:
     time_difference = date_end - date_begin
 
     # Create boolean check for the time interval chosen
-    #if time_difference > interval_max:
-    #st.write('It\'s not possible to select more than 11 days.')
+    # if time_difference > interval_max:
+    # st.write('It\'s not possible to select more than 11 days.')
 
     connection = mysql.connector.connect(
         host="apiivm78.etsii.upm.es",
