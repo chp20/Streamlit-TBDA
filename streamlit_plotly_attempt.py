@@ -66,6 +66,9 @@ if boolean_decision:
     example_data.append({"Start": data_uno[0]["Start"], "Finish": data_uno[0]["Finish"], "Final_Value": data_uno[0]["Final_Value"]})
     st.write(example_data)
 
+    example_data_carrier = pd.DataFrame(example_data)
+    fig = px.timeline(example_data, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
+    st.plotly_chart(fig)
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
