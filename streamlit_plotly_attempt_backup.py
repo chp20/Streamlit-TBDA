@@ -69,7 +69,7 @@ if boolean_decision:
     counter = 0
     While counter < len(example):
         example_data.append({"Start": data_uno[counter][1], "Finish": data_uno[counter][2], "Final_Value": data_uno[counter][3]})
-    
+        counter +=1
     example_data_carrier = pd.DataFrame(example_data)
     
     fig = px.timeline(example_data_carrier, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
