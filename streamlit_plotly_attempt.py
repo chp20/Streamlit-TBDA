@@ -62,7 +62,7 @@ else:
 
     # Create boolean check for the time interval chosen
     #if time_difference > interval_max:
-     #   st.write('It\'s not possible to select more than 11 days.')
+    #st.write('It\'s not possible to select more than 11 days.')
 
     connection = mysql.connector.connect(
         host="apiivm78.etsii.upm.es",
