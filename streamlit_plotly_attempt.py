@@ -64,7 +64,7 @@ if boolean_decision:
     z = dt.datetime(2023,1,25,10,17,30)
     v = 0.7
     example_data.append({"Start": x, "End": z,"Final_Value": v })
-    print(example_data)
+    st.write(example_data)
 
 
 else:
