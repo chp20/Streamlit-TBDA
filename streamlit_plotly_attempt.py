@@ -24,10 +24,17 @@ if boolean_decision:
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
    
     data = [
-        dict(Task="Task 1", Start='2023-01-10', Finish='2023-01-15', Value=0.7),
-        dict(Task="Task 2", Start='2023-01-05', Finish='2023-01-10', Value=0.5),
-        # Add more tasks as needed
-    ]
+    dict("datetime.datetime(2023, 1, 25, 10, 15, 1)", "datetime.datetime(2023, 1, 25, 10, 17, 30)", 0.7),
+    dict( "datetime.datetime(2023, 1, 25, 10, 18, 20)", "datetime.datetime(2023, 1, 25, 10, 20, 40)", 0.75),
+    dict( "datetime.datetime(2023, 1, 25, 10, 22, 5)", "datetime.datetime(2023, 1, 25, 10, 23, 15)", 0.88),
+    dict( "datetime.datetime(2023, 1, 25, 10, 23, 30)", "datetime.datetime(2023, 1, 25, 10, 25, 10)", 0.8),
+    dict( "datetime.datetime(2023, 1, 25, 10, 27, 12)", "datetime.datetime(2023, 1, 25, 10, 28, 19)", 0.74),
+    dict( "datetime.datetime(2023, 1, 25, 10, 29, 44)", "datetime.datetime(2023, 1, 25, 10, 33, 11)", 0.69),
+    dict( "datetime.datetime(2023, 1, 25, 10, 35, 25)", "datetime.datetime(2023, 1, 25, 10, 38, 55)", 0.6),
+]
+ 
+
+    
     fig2 = px.timeline(data, x_start="Start", x_end="Finish", y="Task")
     fig2.update_layout(title_text='Gantt Chart with Links')
     st.plotly_chart(fig2)
@@ -48,7 +55,7 @@ if boolean_decision:
         checkdata.append(x)
     mycursor.close()
     connection.close()
-    st.write(checkdata)
+
     
 else:
     # If checkbox is not checked, create an empty placeholder
