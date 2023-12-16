@@ -33,8 +33,8 @@ if boolean_decision:
        {"Start": dt.datetime(2023, 1, 25, 10, 35, 25), "Finish": dt.datetime(2023, 1, 25, 10, 38, 55), "Final_Value": 0.6},
     ]
 
-    # Create a DataFrame from data1
-    df_final_values = pd.DataFrame(data1, columns=['Start', 'Finish', 'Final_Value'])
+    # Create a DataFrame from data_uno
+    df_final_values = pd.DataFrame(data_uno, columns=['Start', 'Finish', 'Final_Value'])
 
     # Plotting Gantt chart with color denoting final values
     fig2 = px.timeline(df_final_values, x_start="Start", x_end="Finish", y="Final_Value")
