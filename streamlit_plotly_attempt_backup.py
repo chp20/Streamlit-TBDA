@@ -59,11 +59,6 @@ if boolean_decision:
     connection.close()
     
     example_data = []
-    x = dt.datetime(2023, 1, 25, 10, 15, 1)
-    z = dt.datetime(2023, 1, 25, 10, 17, 30)
-    v = 0.7
-    #example_data.append({"Start": data_uno[0]["Start"], "Finish": data_uno[0]["Finish"], "Final_Value": data_uno[0]["Final_Value"]})
-
     counter = 0
     while counter < len(data_uno):
         example_data.append({"Start": data_uno[counter]["Start"], "Finish": data_uno[counter]["Finish"], "Final_Value": data_uno[counter]["Final_Value"]})
