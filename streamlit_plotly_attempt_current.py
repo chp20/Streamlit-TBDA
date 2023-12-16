@@ -41,7 +41,7 @@ if boolean_decision:
         checkdata.append(x)
     mycursor.close()
     connection.close()
-    st.write(checkdata)
+
 
     ticker = 0
     checkdata_carrier = []
