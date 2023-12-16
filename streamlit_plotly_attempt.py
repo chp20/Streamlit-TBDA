@@ -57,13 +57,13 @@ if boolean_decision:
         checkdata.append(x)
     mycursor.close()
     connection.close()
-    st.write(checkdata[0][0],checkdata[0][1],checkdata[0][2])
+    st.write(checkdata[0][1],checkdata[0][2],checkdata[0][3])
 
     example_data = []
     x = dt.datetime(2023,1,25,10,15,1)
     z = dt.datetime(2023,1,25,10,17,30)
     v = 0.7
-    example_data.append({"Start": x, "End": z,"Final_Value": v })
+    example_data.append({"Start": example_data[0][1], "End": example_data[0][2],"Final_Value": example_data[0][3]})
     st.write(example_data)
 
 
