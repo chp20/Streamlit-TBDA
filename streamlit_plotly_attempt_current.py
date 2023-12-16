@@ -63,14 +63,14 @@ if boolean_decision:
     ticker = 0
     checkdata_carrier = []
     while ticker < len(checkdata):
-        checkdata_carrier.append({"Start": checkdata[ticker]["Start"], "Finish": checkdata[ticker]["Finish"], "Final_Value": checkdata[ticker]["Final_Value"]})
+        checkdata_carrier.append({"Start": checkdata[ticker][1], "Finish": checkdata[ticker][2], "Final_Value": checkdata[ticker][3]})
         ticker += 1
     
 
     example_data = []
     counter = 0
     while counter < len(data_uno):
-        example_data.append({"Start": data_uno[counter][1], "Finish": data_uno[counter][2], "Final_Value": data_uno[counter][3]})
+        example_data.append({"Start": data_uno[counter]["Start"], "Finish": data_uno[counter]["End"], "Final_Value": data_uno[counter]["Final_Value"]})
         counter += 1
     example_data_carrier = pd.DataFrame(example_data)
 
