@@ -60,7 +60,12 @@ if boolean_decision:
     connection.close()
 
     st.write(checkdata)
-    
+    ticker = 0
+    checkdata_carrier = []
+    while counter < len(checkdata):
+        checkdata_carrier.append({"Start": data_uno[counter][1], "Finish": data_uno[counter][2], "Final_Value": data_uno[counter][3]})
+        ticker += 1
+    st.write(checkdata_carrier)
     example_data = []
     counter = 0
     while counter < len(data_uno):
