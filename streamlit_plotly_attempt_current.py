@@ -63,7 +63,7 @@ if boolean_decision:
     ticker = 0
     checkdata_carrier = []
     while ticker < len(checkdata):
-        checkdata_carrier.append({"Start": data_uno[counter][1], "Finish": data_uno[counter][2], "Final_Value": data_uno[counter][3]})
+        checkdata_carrier.append({"Start": data_uno[ticker][1], "Finish": data_uno[ticker][2], "Final_Value": data_uno[ticker][3]})
         ticker += 1
     st.write(checkdata_carrier)
     
