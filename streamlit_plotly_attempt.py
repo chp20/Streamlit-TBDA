@@ -24,13 +24,13 @@ if boolean_decision:
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
    
     data_uno = [
-       {"Start": dt.datetime(2023, 1, 25, 10, 15, 1), "Finish": dt.datetime(2023, 1, 25, 10, 17, 30), "Final_Value": 0.7},
-       {"Start": dt.datetime(2023, 1, 25, 10, 18, 20), "Finish": dt.datetime(2023, 1, 25, 10, 20, 40), "Final_Value": 0.75},
-       {"Start": dt.datetime(2023, 1, 25, 10, 22, 5), "Finish": dt.datetime(2023, 1, 25, 10, 23, 15), "Final_Value": 0.88},
-       {"Start": dt.datetime(2023, 1, 25, 10, 23, 30), "Finish": dt.datetime(2023, 1, 25, 10, 25, 10), "Final_Value": 0.8},
-       {"Start": dt.datetime(2023, 1, 25, 10, 27, 12), "Finish": dt.datetime(2023, 1, 25, 10, 28, 19), "Final_Value": 0.74},
-       {"Start": dt.datetime(2023, 1, 25, 10, 29, 44), "Finish": dt.datetime(2023, 1, 25, 10, 33, 11), "Final_Value": 0.69},
-       {"Start": dt.datetime(2023, 1, 25, 10, 35, 25), "Finish": dt.datetime(2023, 1, 25, 10, 38, 55), "Final_Value": 0.6},
+        {"Start": dt.datetime(2023, 1, 25, 10, 15, 1), "Finish": dt.datetime(2023, 1, 25, 10, 17, 30), "Final_Value": 0.7},
+        {"Start": dt.datetime(2023, 1, 25, 10, 18, 20), "Finish": dt.datetime(2023, 1, 25, 10, 20, 40), "Final_Value": 0.75},
+        {"Start": dt.datetime(2023, 1, 25, 10, 22, 5), "Finish": dt.datetime(2023, 1, 25, 10, 23, 15), "Final_Value": 0.88},
+        {"Start": dt.datetime(2023, 1, 25, 10, 23, 30), "Finish": dt.datetime(2023, 1, 25, 10, 25, 10), "Final_Value": 0.8},
+        {"Start": dt.datetime(2023, 1, 25, 10, 27, 12), "Finish": dt.datetime(2023, 1, 25, 10, 28, 19), "Final_Value": 0.74},
+        {"Start": dt.datetime(2023, 1, 25, 10, 29, 44), "Finish": dt.datetime(2023, 1, 25, 10, 33, 11), "Final_Value": 0.69},
+        {"Start": dt.datetime(2023, 1, 25, 10, 35, 25), "Finish": dt.datetime(2023, 1, 25, 10, 38, 55), "Final_Value": 0.6},
     ]
 
     # Create a DataFrame from data_uno with the corrected variable name
@@ -47,6 +47,7 @@ if boolean_decision:
         password="UPM#2324",
         database="sclerosisTBDA"
     )
+    
     checkdata = []
     mycursor = connection.cursor()
     qry = "select * FROM `Data_sample_Christian`"
@@ -57,18 +58,21 @@ if boolean_decision:
         checkdata.append(x)
     mycursor.close()
     connection.close()
-    st.write(checkdata[0][1], checkdata[0][2], checkdata[0][3])
 
+    st.write(checkdata)
+    
     example_data = []
-    x = dt.datetime(2023, 1, 25, 10, 15, 1)
-    z = dt.datetime(2023, 1, 25, 10, 17, 30)
-    v = 0.7
-    example_data.append({"Start": data_uno[0]["Start"], "Finish": data_uno[0]["Finish"], "Final_Value": data_uno[0]["Final_Value"]})
-    st.write(example_data)
-
+    counter = 0
+    while counter < len(data_uno):
+        example_data.append({"Start": data_uno[counter]["Start"], "Finish": data_uno[counter]["Finish"], "Final_Value": data_uno[counter]["Final_Value"]})
+        counter += 1
     example_data_carrier = pd.DataFrame(example_data)
-    fig = px.timeline(example_data, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
-    st.plotly_chart(fig)
+    
+    fig4 = px.timeline(example_data_carrier, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
+    st.plotly_chart(fig4)
+    st.write(example_data_carrier)
+
+
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
