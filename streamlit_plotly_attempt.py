@@ -4,6 +4,7 @@ import datetime as dt
 import mysql.connector
 import plotly.express as px
 import plotly.graph_objects as go
+
 boolean_decision = st.checkbox('Allow me to enter final dates')
 
 if boolean_decision:
@@ -24,10 +25,10 @@ if boolean_decision:
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
 
     data = [
-    dict(Task="Task 1", Start='2023-01-10', Finish='2023-01-15'),
-    dict(Task="Task 2", Start='2023-01-05', Finish='2023-01-10'),
-    # Add more tasks as needed
-]
+        dict(Task="Task 1", Start='2023-01-10', Finish='2023-01-15', Value=0.7),
+        dict(Task="Task 2", Start='2023-01-05', Finish='2023-01-10', Value=0.5),
+        # Add more tasks as needed
+    ]
     fig2 = px.timeline(data, x_start="Start", x_end="Finish", y="Task")
     fig2.update_layout(title_text='Gantt Chart with Links')
     st.plotly_chart(fig2)
@@ -53,27 +54,31 @@ if boolean_decision:
 
     for i, task_data in enumerate(sampledata):
         task_name = f"Task {i}"
-        start_time, end_time, value = task_data
-    
+        if len(task_data) == 4:
+            start_time, end_time, value1, value2 = task_data
+        else:
+            # Handle the case where task_data does not have four elements
+            st.warning(f"Invalid data format for Task {i}")
+            continue
+
         fig3.add_trace(go.Bar(
             x=[(start_time + end_time) / 2],
             y=[task_name],
             orientation='h',
             base=start_time,
             width=(end_time - start_time),
-            marker=dict(color=f'rgba(0, 0, 255, {value})'),
-            text=f"Value: {value}",
+            marker=dict(color=f'rgba(0, 0, 255, {value1 + value2})'),
+            text=f"Value: {value1}, Value2: {value2}",
             hoverinfo='text',
         ))
-    
+
     # Update layout
     fig3.update_layout(
         title='Gantt Chart with Values',
         xaxis=dict(title='Time'),
         yaxis=dict(title='Task'),
     )
-    px.plotly_chart(fig)    
-
+    px.plotly_chart(fig3)
 
 else:
     # If checkbox is not checked, create an empty placeholder
