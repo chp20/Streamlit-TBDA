@@ -53,8 +53,8 @@ else:
     time_difference = date_end - date_begin
 
     # Create boolean check for the time interval chosen
-    if time_difference > interval_max:
-        st.write('It\'s not possible to select more than 11 days.')
+    #if time_difference > interval_max:
+     #   st.write('It\'s not possible to select more than 11 days.')
 
     connection = mysql.connector.connect(
         host="apiivm78.etsii.upm.es",
@@ -78,18 +78,22 @@ else:
     # Create a DataFrame from the list
     df = pd.DataFrame(data)
 
-    # Create a unitless y-axis column
-    df['unitless_y'] = range(1, len(df) + 1)
+    # Check if the DataFrame is empty
+    if df.empty:
+        st.warning("No data available for the selected time range.")
+    else:
+        # Create a unitless y-axis column
+        df['unitless_y'] = range(1, len(df) + 1)
 
-    connection.commit()
-    mycursor.close()
-    connection.close()
+        connection.commit()
+        mycursor.close()
+        connection.close()
 
-    # Plotting with Plotly Express
-    fig = px.scatter(df, x='datetime', y='unitless_y')
+        # Plotting with Plotly Express
+        fig = px.scatter(df, x='datetime', y='unitless_y')
 
-    # Remove y-axis label (optional)
-    fig.update_yaxes(title_text='')
+        # Remove y-axis label (optional)
+        fig.update_yaxes(title_text='')
 
-    # Display the Plotly Express chart
-    st.plotly_chart(fig)
+        # Display the Plotly Express chart
+        st.plotly_chart(fig)
