@@ -28,7 +28,9 @@ if boolean_decision:
     dict(Task="Task 2", Start='2023-01-05', Finish='2023-01-10'),
     # Add more tasks as needed
 ]
-
+    fig2 = px.timeline(data, x_start="Start", x_end="Finish", y="Task")
+    fig2.update_layout(title_text='Gantt Chart with Links')
+    st.plotly_chart(fig2)
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
