@@ -22,22 +22,18 @@ if boolean_decision:
 
     final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
-   
+
     data_uno = [
         {"Start": dt.datetime(2023, 1, 25, 10, 15, 1), "Finish": dt.datetime(2023, 1, 25, 10, 17, 30), "Final_Value": 0.7},
         {"Start": dt.datetime(2023, 1, 25, 10, 18, 20), "Finish": dt.datetime(2023, 1, 25, 10, 20, 40), "Final_Value": 0.75},
-        {"Start": dt.datetime(2023, 1, 25, 10, 22, 5), "Finish": dt.datetime(2023, 1, 25, 10, 23, 15), "Final_Value": 0.88},
-        {"Start": dt.datetime(2023, 1, 25, 10, 23, 30), "Finish": dt.datetime(2023, 1, 25, 10, 25, 10), "Final_Value": 0.8},
-        {"Start": dt.datetime(2023, 1, 25, 10, 27, 12), "Finish": dt.datetime(2023, 1, 25, 10, 28, 19), "Final_Value": 0.74},
-        {"Start": dt.datetime(2023, 1, 25, 10, 29, 44), "Finish": dt.datetime(2023, 1, 25, 10, 33, 11), "Final_Value": 0.69},
-        {"Start": dt.datetime(2023, 1, 25, 10, 35, 25), "Finish": dt.datetime(2023, 1, 25, 10, 38, 55), "Final_Value": 0.6},
     ]
 
     # Create a DataFrame from data_uno with the corrected variable name
     df_final_values = pd.DataFrame(data_uno, columns=['Start', 'Finish', 'Final_Value'])
 
     # Plotting Gantt chart with color denoting final values
-    fig2 = px.timeline(df_final_values, x_start="Start", x_end="Finish", y="Final_Value")
+    fig2 = px.timeline(df_final_values, x_start="Start", x_end="Finish", y="Final_Value", color="Final_Value",
+                       color_continuous_scale=[(0, "red"), (1, "green")])
     fig2.update_layout(title_text='Gantt Chart with Final Values')
     st.plotly_chart(fig2)
 
@@ -47,32 +43,40 @@ if boolean_decision:
         password="UPM#2324",
         database="sclerosisTBDA"
     )
-    
+
     checkdata = []
     mycursor = connection.cursor()
     qry = "select * FROM `Data_sample_Christian`"
     mycursor.execute(qry)
     rows = mycursor.fetchall()
-    
+
     for x in rows:
         checkdata.append(x)
     mycursor.close()
     connection.close()
-
     st.write(checkdata)
-    
+
+    ticker = 0
+    checkdata_carrier = []
+
+    while ticker < len(checkdata):
+        checkdata_carrier.append({"Start": checkdata[ticker][1], "Finish": checkdata[ticker][2], "Final_Value": checkdata[ticker][3]})
+        ticker += 1
+    carrierdf = pd.DataFrame(checkdata_carrier)
+    fig2 = px.timeline(carrierdf, x_start="Start", x_end="Finish", y="Final_Value", color="Final_Value",
+                       color_continuous_scale=[(0, "red"), (1, "green")])
+    fig2.update_layout(title_text='Gantt Chart with Final Values')
+    st.plotly_chart(fig2)
+
     example_data = []
     counter = 0
     while counter < len(data_uno):
         example_data.append({"Start": data_uno[counter]["Start"], "Finish": data_uno[counter]["Finish"], "Final_Value": data_uno[counter]["Final_Value"]})
         counter += 1
     example_data_carrier = pd.DataFrame(example_data)
-    
+
     fig4 = px.timeline(example_data_carrier, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
     st.plotly_chart(fig4)
-    st.write(example_data_carrier)
-
-
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
@@ -103,8 +107,8 @@ else:
     time_difference = date_end - date_begin
 
     # Create boolean check for the time interval chosen
-    #if time_difference > interval_max:
-    #st.write('It\'s not possible to select more than 11 days.')
+    # if time_difference > interval_max:
+    # st.write('It\'s not possible to select more than 11 days.')
 
     connection = mysql.connector.connect(
         host="apiivm78.etsii.upm.es",
