@@ -58,6 +58,15 @@ if boolean_decision:
     mycursor.close()
     connection.close()
     st.write(checkdata[0][0],checkdata[0][1],checkdata[0][2])
+
+    example_data = []
+    x = dt.datetime(2023,1,25,10,15,1)
+    z = dt.datetime(2023,1,25,10,17,30)
+    v = 0.7
+    example_data.append({"Start": x, "End": z,"Final_Value": v })
+    print(example_data)
+
+
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
