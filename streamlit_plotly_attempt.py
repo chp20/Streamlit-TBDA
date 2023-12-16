@@ -33,7 +33,7 @@ if boolean_decision:
        {"Start": dt.datetime(2023, 1, 25, 10, 35, 25), "Finish": dt.datetime(2023, 1, 25, 10, 38, 55), "Final_Value": 0.6},
     ]
 
-    # Create a DataFrame from data_uno
+    # Create a DataFrame from data_uno with the corrected variable name
     df_final_values = pd.DataFrame(data_uno, columns=['Start', 'Finish', 'Final_Value'])
 
     # Plotting Gantt chart with color denoting final values
@@ -57,15 +57,14 @@ if boolean_decision:
         checkdata.append(x)
     mycursor.close()
     connection.close()
-    st.write(checkdata[0][1],checkdata[0][2],checkdata[0][3])
+    st.write(checkdata[0][1], checkdata[0][2], checkdata[0][3])
 
     example_data = []
-    x = dt.datetime(2023,1,25,10,15,1)
-    z = dt.datetime(2023,1,25,10,17,30)
+    x = dt.datetime(2023, 1, 25, 10, 15, 1)
+    z = dt.datetime(2023, 1, 25, 10, 17, 30)
     v = 0.7
-    example_data.append({"Start": data_uno[0][1], "End": data_uno[0][2],"Final_Value": data_uno[0][3]})
+    example_data.append({"Start": data_uno[0]["Start"], "Finish": data_uno[0]["Finish"], "Final_Value": data_uno[0]["Final_Value"]})
     st.write(example_data)
-
 
 else:
     # If checkbox is not checked, create an empty placeholder
