@@ -3,7 +3,7 @@ import pandas as pd
 import datetime as dt
 import mysql.connector
 import plotly.express as px
-
+import plotly.graph_objects as go
 boolean_decision = st.checkbox('Allow me to enter final dates')
 
 if boolean_decision:
@@ -48,6 +48,33 @@ if boolean_decision:
     mycursor.close()
     connection.close()
     st.write(sampledata)
+
+    fig3 = go.Figure()
+
+    for i, task_data in enumerate(sampledata):
+        task_name = f"Task {i}"
+        start_time, end_time, value = task_data
+    
+        fig3.add_trace(go.Bar(
+            x=[(start_time + end_time) / 2],
+            y=[task_name],
+            orientation='h',
+            base=start_time,
+            width=(end_time - start_time),
+            marker=dict(color=f'rgba(0, 0, 255, {value})'),
+            text=f"Value: {value}",
+            hoverinfo='text',
+        ))
+    
+    # Update layout
+    fig3.update_layout(
+        title='Gantt Chart with Values',
+        xaxis=dict(title='Time'),
+        yaxis=dict(title='Task'),
+    )
+    px.plotly_chart(fig)    
+
+
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
