@@ -32,7 +32,6 @@ if boolean_decision:
        {"Start": dt.datetime(2023, 1, 25, 10, 29, 44), "Finish": dt.datetime(2023, 1, 25, 10, 33, 11), "Final_Value": 0.69},
        {"Start": dt.datetime(2023, 1, 25, 10, 35, 25), "Finish": dt.datetime(2023, 1, 25, 10, 38, 55), "Final_Value": 0.6},
     ]
-    st.write('check1')
     # Create a DataFrame from data_uno with the corrected variable name
     df_final_values = pd.DataFrame(data_uno, columns=['Start', 'Finish', 'Final_Value'])
 
@@ -58,14 +57,14 @@ if boolean_decision:
     mycursor.close()
     connection.close()
     st.write(checkdata[0][1], checkdata[0][2], checkdata[0][3])
-    st.write('check2')
+    
     example_data = []
     x = dt.datetime(2023, 1, 25, 10, 15, 1)
     z = dt.datetime(2023, 1, 25, 10, 17, 30)
     v = 0.7
     #example_data.append({"Start": data_uno[0][1], "Finish": data_uno[0][2], "Final_Value": data_uno[0][3]})
     #st.write(example_data)
-    st.write('check3')
+    
     counter = 0
     while counter < len(data_uno):
         example_data.append({"Start": data_uno[counter][1], "Finish": data_uno[counter][2], "Final_Value": data_uno[counter][3]})
