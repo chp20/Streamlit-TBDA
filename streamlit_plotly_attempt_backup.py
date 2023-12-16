@@ -22,6 +22,50 @@ if boolean_decision:
 
     final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
+   
+    data_uno = [
+       {"Start": dt.datetime(2023, 1, 25, 10, 15, 1), "Finish": dt.datetime(2023, 1, 25, 10, 17, 30), "Final_Value": 0.7},
+       {"Start": dt.datetime(2023, 1, 25, 10, 18, 20), "Finish": dt.datetime(2023, 1, 25, 10, 20, 40), "Final_Value": 0.75},
+       {"Start": dt.datetime(2023, 1, 25, 10, 22, 5), "Finish": dt.datetime(2023, 1, 25, 10, 23, 15), "Final_Value": 0.88},
+       {"Start": dt.datetime(2023, 1, 25, 10, 23, 30), "Finish": dt.datetime(2023, 1, 25, 10, 25, 10), "Final_Value": 0.8},
+       {"Start": dt.datetime(2023, 1, 25, 10, 27, 12), "Finish": dt.datetime(2023, 1, 25, 10, 28, 19), "Final_Value": 0.74},
+       {"Start": dt.datetime(2023, 1, 25, 10, 29, 44), "Finish": dt.datetime(2023, 1, 25, 10, 33, 11), "Final_Value": 0.69},
+       {"Start": dt.datetime(2023, 1, 25, 10, 35, 25), "Finish": dt.datetime(2023, 1, 25, 10, 38, 55), "Final_Value": 0.6},
+    ]
+
+    # Create a DataFrame from data_uno
+    df_final_values = pd.DataFrame(data_uno, columns=['Start', 'Finish', 'Final_Value'])
+
+    # Plotting Gantt chart with color denoting final values
+    fig2 = px.timeline(df_final_values, x_start="Start", x_end="Finish", y="Final_Value")
+    fig2.update_layout(title_text='Gantt Chart with Final Values')
+    st.plotly_chart(fig2)
+
+    connection = mysql.connector.connect(
+        host="apiivm78.etsii.upm.es",
+        user="TBDA",
+        password="UPM#2324",
+        database="sclerosisTBDA"
+    )
+    checkdata = []
+    mycursor = connection.cursor()
+    qry = "select * FROM `Data_sample_Christian`"
+    mycursor.execute(qry)
+    rows = mycursor.fetchall()
+    
+    for x in rows:
+        checkdata.append(x)
+    mycursor.close()
+    connection.close()
+    st.write(checkdata[0][1],checkdata[0][2],checkdata[0][3])
+
+    example_data = []
+    x = dt.datetime(2023,1,25,10,15,1)
+    z = dt.datetime(2023,1,25,10,17,30)
+    v = 0.7
+    example_data.append({"Start": data_uno[0][1], "End": data_uno[0][2],"Final_Value": data_uno[0][3]})
+    st.write(example_data)
+
 
 else:
     # If checkbox is not checked, create an empty placeholder
@@ -54,7 +98,7 @@ else:
 
     # Create boolean check for the time interval chosen
     #if time_difference > interval_max:
-     #   st.write('It\'s not possible to select more than 11 days.')
+    #st.write('It\'s not possible to select more than 11 days.')
 
     connection = mysql.connector.connect(
         host="apiivm78.etsii.upm.es",
