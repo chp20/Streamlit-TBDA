@@ -23,7 +23,7 @@ if boolean_decision:
     final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
    
-    data1 = [
+    data_uno = [
        {"Start": dt.datetime(2023, 1, 25, 10, 15, 1), "Finish": dt.datetime(2023, 1, 25, 10, 17, 30), "Final_Value": 0.7},
        {"Start": dt.datetime(2023, 1, 25, 10, 18, 20), "Finish": dt.datetime(2023, 1, 25, 10, 20, 40), "Final_Value": 0.75},
        {"Start": dt.datetime(2023, 1, 25, 10, 22, 5), "Finish": dt.datetime(2023, 1, 25, 10, 23, 15), "Final_Value": 0.88},
@@ -63,7 +63,7 @@ if boolean_decision:
     x = dt.datetime(2023,1,25,10,15,1)
     z = dt.datetime(2023,1,25,10,17,30)
     v = 0.7
-    example_data.append({"Start": data1[0][1], "End": data1[0][2],"Final_Value": data1[0][3]})
+    example_data.append({"Start": data_uno[0][1], "End": data_uno[0][2],"Final_Value": data_uno[0][3]})
     st.write(example_data)
 
 
