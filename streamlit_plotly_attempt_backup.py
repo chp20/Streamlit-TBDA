@@ -72,8 +72,8 @@ if boolean_decision:
         counter +=1
     example_data_carrier = pd.DataFrame(example_data)
     
-    fig = px.timeline(example_data_carrier, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
-    st.plotly_chart(fig)
+    fig4 = px.timeline(example_data_carrier, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
+    st.plotly_chart(fig4)
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
