@@ -70,7 +70,7 @@ if boolean_decision:
     example_data = []
     counter = 0
     while counter < len(data_uno):
-        example_data.append({"Start": data_uno[counter]["Start"], "Finish": data_uno[counter]["Finish"], "Final_Value": data_uno[counter]["Final_Value"]})
+        example_data.append({"Start": data_uno[counter][1], "Finish": data_uno[counter][2], "Final_Value": data_uno[counter][3]})
         counter += 1
     example_data_carrier = pd.DataFrame(example_data)
 
