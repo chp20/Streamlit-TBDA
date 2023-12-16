@@ -57,7 +57,7 @@ if boolean_decision:
         checkdata.append(x)
     mycursor.close()
     connection.close()
-    st.write(checkdata)
+    st.write(checkdata[0],checkdata[1],checkdata[2])
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
