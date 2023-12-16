@@ -23,7 +23,7 @@ if boolean_decision:
     final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
    
-    data = [
+    data1 = [
     dict("datetime.datetime(2023, 1, 25, 10, 15, 1)", "datetime.datetime(2023, 1, 25, 10, 17, 30)", 0.7),
     dict( "datetime.datetime(2023, 1, 25, 10, 18, 20)", "datetime.datetime(2023, 1, 25, 10, 20, 40)", 0.75),
     dict( "datetime.datetime(2023, 1, 25, 10, 22, 5)", "datetime.datetime(2023, 1, 25, 10, 23, 15)", 0.88),
@@ -34,7 +34,11 @@ if boolean_decision:
 ]
  
 
-    
+    data = [
+    dict(Task="Task 1", Start='2023-01-01', Finish='2023-01-10'),
+    dict(Task="Task 2", Start='2023-01-05', Finish='2023-01-15'),
+    # Add more tasks as needed
+]
     fig2 = px.timeline(data, x_start="Start", x_end="Finish", y="Task")
     fig2.update_layout(title_text='Gantt Chart with Links')
     st.plotly_chart(fig2)
