@@ -59,13 +59,13 @@ if boolean_decision:
     mycursor.close()
     connection.close()
 
-    st.write(checkdata)
+    
     ticker = 0
     checkdata_carrier = []
     while ticker < len(checkdata):
         checkdata_carrier.append({"Start": checkdata[ticker]["Start"], "Finish": checkdata[ticker]["Finish"], "Final_Value": checkdata[ticker]["Final_Value"]})
         ticker += 1
-    st.write(checkdata_carrier)
+    
 
     example_data = []
     counter = 0
