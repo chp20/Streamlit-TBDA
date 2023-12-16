@@ -23,6 +23,12 @@ if boolean_decision:
     final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
 
+    data = [
+    dict(Task="Task 1", Start='2023-01-10', Finish='2023-01-15'),
+    dict(Task="Task 2", Start='2023-01-05', Finish='2023-01-10'),
+    # Add more tasks as needed
+]
+
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
