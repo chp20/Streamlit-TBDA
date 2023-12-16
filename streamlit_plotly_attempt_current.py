@@ -76,7 +76,7 @@ if boolean_decision:
 
     fig4 = px.timeline(example_data_carrier, x_start="Start", x_end="Finish", y="Final_Value", title="Gantt Chart Example")
     st.plotly_chart(fig4)
-    st.write(example_data_carrier)
+    # st.write(example_data_carrier)
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
