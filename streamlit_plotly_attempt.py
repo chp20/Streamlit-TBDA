@@ -43,7 +43,7 @@ if boolean_decision:
     rows = mycursor.fetchall()
 
     
-    ##collect all data
+    ##collect all data within timeframe given by user
     for x in rows:
         if final_date_begin <= x[1] and final_date_end >= x[2]:
             checkdata.append(x)
@@ -60,12 +60,16 @@ if boolean_decision:
         checkdata_carrier.append({"Start": checkdata[ticker][1], "Finish": checkdata[ticker][2], "Final_Value": checkdata[ticker][3]})
         ticker += 1
     carrierdf = pd.DataFrame(checkdata_carrier)
-    fig2 = px.timeline(carrierdf, x_start="Start", x_end="Finish", y="Final_Value", color="Final_Value",
-                       color_continuous_scale=[(0, "red"), (1, "green")])
-    fig2.update_layout(title_text='Gantt Chart with Final Values')
 
-    ##plot it
-    st.plotly_chart(fig2)
+    if checkdata_carrier.empty:
+        st.warning("No data available for the selected time range.")
+    else: 
+        fig2 = px.timeline(carrierdf, x_start="Start", x_end="Finish", y="Final_Value", color="Final_Value",
+                           color_continuous_scale=[(0, "red"), (1, "green")])
+        fig2.update_layout(title_text='Gantt Chart with Final Values')
+    
+        ##plot it
+        st.plotly_chart(fig2)
 
 
 
