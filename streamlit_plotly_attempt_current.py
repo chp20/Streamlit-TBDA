@@ -46,7 +46,7 @@ if boolean_decision:
     ##collect all data
     for x in rows:
         if final_date_begin <= x[1] and final_date_end >= x[2]:
-        checkdata.append(x)
+            checkdata.append(x)
         
     mycursor.close()
     connection.close()
