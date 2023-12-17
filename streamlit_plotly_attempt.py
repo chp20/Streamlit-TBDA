@@ -10,6 +10,7 @@ import numpy as np
 ##create switch between initial testing and final dates
 boolean_decision = st.checkbox('Allow me to enter final dates')
 
+
 ##first the final dates part
 if boolean_decision:
     # If checkbox is checked, show the final date inputs
@@ -73,23 +74,7 @@ if boolean_decision:
         ##plot it
         st.plotly_chart(fig2)
 
-        # Iterate through each data point and create a subplot for each
-        for index, row in carrierdf.iterrows():
-            with st.expander(f'Data Point {index+1}'):
-                # Filter data within the time window of the current data point
-                sub_data = checkdata[(checkdata[:, 1] >= row['Start']) & (checkdata[:, 2] <= row['Finish'])]
 
-                # Plot subplots
-                for sub_index, sub_row in enumerate(sub_data):
-                    plt.figure(figsize=(8, 4))
-                    plt.plot(sub_row[4], sub_row[5], marker='o', linestyle='-', color='b', label='Data Points')
-                    plt.xlabel('X-axis Label')
-                    plt.ylabel('Y-axis Label')
-                    plt.title(f'Subplot for Data Point {index+1} - Subplot {sub_index+1}')
-                    plt.legend()
-
-                    # Display the subplot using Streamlit
-                    st.pyplot(plt.gcf())
 
     ######################################################################################## Temporary workstation
     # Sample data
