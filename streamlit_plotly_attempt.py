@@ -61,7 +61,7 @@ if boolean_decision:
         ticker += 1
     carrierdf = pd.DataFrame(checkdata_carrier)
 
-    if checkdata_carrier.empty:
+    if carrierdf.empty:
         st.warning("No data available for the selected time range.")
     else: 
         fig2 = px.timeline(carrierdf, x_start="Start", x_end="Finish", y="Final_Value", color="Final_Value",
