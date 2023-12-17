@@ -1,11 +1,14 @@
+##Import modules
 import streamlit as st
 import pandas as pd
 import datetime as dt
 import mysql.connector
 import plotly.express as px
 
+##create switch between initial testing and final dates
 boolean_decision = st.checkbox('Allow me to enter final dates')
 
+##first the final dates part
 if boolean_decision:
     # If checkbox is checked, show the final date inputs
     final_col1, final_col2 = st.columns(2)
@@ -20,10 +23,12 @@ if boolean_decision:
             final_end_date = st.date_input('Give your final date:', key="final_end_date")
             final_end_time = st.time_input('Final time:', key="final_end_time")
 
+    ##final datetime format chosen dates
     final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
     final_date_end = dt.datetime.combine(final_end_date, final_end_time)
 
 
+    ##connect to mariadb --> phpmyadmin
     connection = mysql.connector.connect(
         host="apiivm78.etsii.upm.es",
         user="TBDA",
@@ -37,15 +42,20 @@ if boolean_decision:
     mycursor.execute(qry)
     rows = mycursor.fetchall()
 
+    
+    ##collect all data
     for x in rows:
+        if final_date_begin <= x[1] and final_date_end >= x[2]:
         checkdata.append(x)
+        
     mycursor.close()
     connection.close()
 
-
+    ##append relevant part of data to new list
     ticker = 0
     checkdata_carrier = []
 
+    ##Set up the plot and add data to right format
     while ticker < len(checkdata):
         checkdata_carrier.append({"Start": checkdata[ticker][1], "Finish": checkdata[ticker][2], "Final_Value": checkdata[ticker][3]})
         ticker += 1
@@ -53,9 +63,15 @@ if boolean_decision:
     fig2 = px.timeline(carrierdf, x_start="Start", x_end="Finish", y="Final_Value", color="Final_Value",
                        color_continuous_scale=[(0, "red"), (1, "green")])
     fig2.update_layout(title_text='Gantt Chart with Final Values')
+
+    ##plot it
     st.plotly_chart(fig2)
 
-   
+
+
+###########
+###########    initial preliminary plotting
+###########
 else:
     # If checkbox is not checked, create an empty placeholder
     placeholder = st.empty()
