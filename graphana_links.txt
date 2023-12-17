@@ -1,1 +1,1 @@
-g
+http://localhost:3000/grafana/goto/8m1FMeDIk?orgId=3
