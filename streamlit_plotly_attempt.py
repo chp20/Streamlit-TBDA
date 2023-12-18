@@ -85,6 +85,7 @@ if boolean_decision:
     stwo=[]
 
     st.write(points[0])
+    st.write(points)
     
 
 else:
