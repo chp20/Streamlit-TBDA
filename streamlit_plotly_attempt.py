@@ -63,9 +63,7 @@ if boolean_decision:
         fig2.update_layout(title_text='Gantt Chart with Final Values')
         st.plotly_chart(fig2)
 
-    st.subheader("Plots of First Three, Second Three, Third Three, and Fourth Three Sets")
-
-    Replace this placeholder with your actual data
+    
     points = [
         (dt.datetime(2023, 1, 25, 10, 18, 20), 500, 550, 570, 1000, 1200, 1100, 100, 90, 60, 0.6, 0.65, 0.77),
         (dt.datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
