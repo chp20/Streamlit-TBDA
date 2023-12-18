@@ -100,7 +100,6 @@ if boolean_decision:
         i+=1
     
 
-    
     # Assuming all lists have the same length
     data = {
         'gnull': gnull,
