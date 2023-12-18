@@ -74,10 +74,10 @@ if boolean_decision:
 
     # Extracting data from the 'points' list
     plot_data = {
-        "Plot 1": points[0:3],
-        "Plot 2": points[3:6],
-        "Plot 3": points[6:9],
-        "Plot 4": points[9:]
+        "Plot 1": points[0::3],
+        "Plot 2": points[1::3],
+        "Plot 3": points[2::3],
+        "Plot 4": points[3::3]
     }
 
     for i, (plot_title, plot_points) in enumerate(plot_data.items(), start=1):
