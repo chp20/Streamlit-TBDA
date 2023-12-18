@@ -69,9 +69,7 @@ if boolean_decision:
         (dt.datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
         (dt.datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
     ]
-    anull = []
-    aone = []
-    atwo = []
+    
     gnull = []
     gone = []
     gtwo = []
@@ -81,10 +79,26 @@ if boolean_decision:
     snull=[]
     sone=[]
     stwo=[]
+    anull = []
+    aone = []
+    atwo = []
 
-    st.write('specific set:', points[0][1])
-    st.write('all of them', points)
-    
+    i = 0
+    while i < len(points):
+        gnull.append(points[i][1])
+        gone.append(points[i][2])
+        gtwo.append(points[i][3])
+        mnull.append(points[i][4])
+        mone.append(points[i][5])
+        mtwo.append(points[i][6])
+        snull.append(points[i][7])
+        sone.append(points[i][8])
+        stwo.append(points[i][9])
+        anull.append(points[i][10])
+        aone.append(points[i][11])
+        atwo.append(points[i][12])
+        i+=1
+    st.write(gnull,gone,gtwo)
 
 else:
     placeholder = st.empty()
