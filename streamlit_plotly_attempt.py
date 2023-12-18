@@ -79,7 +79,7 @@ if boolean_decision:
         "Plot 3": points[6:9],
         "Plot 4": points[9:]
     }
-
+    st.write(plot_data)
     for plot_title, plot_points in plot_data.items():
         print(f"{plot_title}: {plot_points}")
 
