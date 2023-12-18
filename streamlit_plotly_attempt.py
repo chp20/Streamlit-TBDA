@@ -82,7 +82,7 @@ if boolean_decision:
     sone=[]
     stwo=[]
 
-    st.write('specific set:', points[0][0])
+    st.write('specific set:', points[0][1])
     st.write('all of them', points)
     
 
