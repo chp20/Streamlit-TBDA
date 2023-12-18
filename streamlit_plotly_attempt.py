@@ -65,32 +65,27 @@ if boolean_decision:
 
     st.subheader("Plots of First Three, Second Three, Third Three, and Fourth Three Sets")
 
-    # Replace this placeholder with your actual data
-    # points = [
-    #     (dt.datetime(2023, 1, 25, 10, 18, 20), 500, 550, 570, 1000, 1200, 1100, 100, 90, 60, 0.6, 0.65, 0.77),
-    #     (dt.datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
-    #     (dt.datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
-    # ]
+    Replace this placeholder with your actual data
+    points = [
+        (dt.datetime(2023, 1, 25, 10, 18, 20), 500, 550, 570, 1000, 1200, 1100, 100, 90, 60, 0.6, 0.65, 0.77),
+        (dt.datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
+        (dt.datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
+    ]
+    anull = []
+    aone = []
+    atwo = []
+    gnull = []
+    gone = []
+    gtwo = []
+    mnull = []
+    mone = []
+    mtwo = []
+    snull=[]
+    sone=[]
+    stwo=[]
 
-    # # Extracting data from the 'points' list
-    # plot_data = {
-    #     "Plot 1": points[0][0:3],
-    #     "Plot 2": points[3:6],
-    #     "Plot 3": points[6:9],
-    #     "Plot 4": points[9:]
-    # }
-    # st.write(plot_data)
-    # for plot_title, plot_points in plot_data.items():
-    #     print(f"{plot_title}: {plot_points}")
-
-    # for i, (plot_title, plot_points) in enumerate(plot_data.items(), start=1):
-    #     st.subheader(plot_title)
-    #     plot_df = pd.DataFrame(plot_points, columns=["datetime", "val1", "val2", "val3", "val4", "val5", "val6",
-    #                                                  "val7", "val8", "val9", "val10", "val11", "val12"])
-
-    #     # Create a line plot for each set of three lines
-    #     fig = px.line(plot_df, x='datetime', y=['val2', 'val3', 'val4'], markers=True)
-    #     st.plotly_chart(fig)
+    st.write(points[0])
+    
 
 else:
     placeholder = st.empty()
