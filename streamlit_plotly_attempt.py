@@ -98,8 +98,51 @@ if boolean_decision:
         aone.append(points[i][11])
         atwo.append(points[i][12])
         i+=1
-    st.write(gnull,gone,gtwo)
+    
 
+    
+    # Assuming all lists have the same length
+    data = {
+        'gnull': gnull,
+        'gone': gone,
+        'gtwo': gtwo,
+        'mnull': mnull,
+        'mone': mone,
+        'mtwo': mtwo,
+        'snull': snull,
+        'sone': sone,
+        'stwo': stwo,
+        'anull': anull,
+        'aone': aone,
+        'atwo': atwo,
+    }
+    
+    df = pd.DataFrame(data)
+    
+    # Streamlit app
+    st.title('Database Plots')
+    
+    # Plotting function
+    def plot_line_chart(dataframe, columns, title):
+        fig = px.line(dataframe, x=dataframe.index, y=columns, labels={'index': 'Data Point', 'value': 'Value'})
+        fig.update_layout(title=title)
+        st.plotly_chart(fig)
+    
+    # Plot for gnull, gone, and gtwo
+    st.subheader('Plot for gnull, gone, and gtwo')
+    plot_line_chart(df[['gnull', 'gone', 'gtwo']], ['gnull', 'gone', 'gtwo'], 'gnull, gone, and gtwo Plot')
+    
+    # Plot for mnull, mone, and mtwo
+    st.subheader('Plot for mnull, mone, and mtwo')
+    plot_line_chart(df[['mnull', 'mone', 'mtwo']], ['mnull', 'mone', 'mtwo'], 'mnull, mone, and mtwo Plot')
+    
+    # Plot for snull, sone, and stwo
+    st.subheader('Plot for snull, sone, and stwo')
+    plot_line_chart(df[['snull', 'sone', 'stwo']], ['snull', 'sone', 'stwo'], 'snull, sone, and stwo Plot')
+    
+    # Plot for anull, aone, and atwo
+    st.subheader('Plot for anull, aone, and atwo')
+    plot_line_chart(df[['anull', 'aone', 'atwo']], ['anull', 'aone', 'atwo'], 'anull, aone, and atwo Plot')
 else:
     placeholder = st.empty()
     col1, col2, col3 = st.columns(3)
