@@ -71,23 +71,7 @@ if boolean_decision:
         (dt.datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
     ]
 
-    # Function to create Plotly Express plots
-    def create_plotly_express_plots(points):
-        num_plots = len(points) // 3  # Adjust this based on your requirement
 
-        for i in range(num_plots):
-            start_index = i * 3
-            end_index = (i + 1) * 3
-            subset = points[start_index:end_index]
-
-            # Extracting datetime and y values
-            datetimes, *y_values = zip(*subset)
-
-            # Creating plot
-            st.subheader(f'Plot {i + 1}')
-            df = pd.DataFrame({'Datetime': datetimes, 'Set 1': y_values[0], 'Set 2': y_values[1], 'Set 3': y_values[2]})
-            fig = px.line(df, x='Datetime', y=['Set 1', 'Set 2', 'Set 3'], markers=True)
-            st.plotly_chart(fig)
 
 else:
     placeholder = st.empty()
