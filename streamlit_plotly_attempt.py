@@ -80,6 +80,9 @@ if boolean_decision:
         "Plot 4": points[9:]
     }
 
+    for plot_title, plot_points in plot_data.items():
+        print(f"{plot_title}: {plot_points}")
+
     for i, (plot_title, plot_points) in enumerate(plot_data.items(), start=1):
         st.subheader(plot_title)
         plot_df = pd.DataFrame(plot_points, columns=["datetime", "val1", "val2", "val3", "val4", "val5", "val6",
