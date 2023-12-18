@@ -77,43 +77,43 @@ if boolean_decision:
 
 
     import streamlit as st
-import matplotlib.pyplot as plt
-from datetime import datetime
-
-# Sample datapoints (replace this with your actual datapoints)
-points = [
-    (datetime(2023, 1, 25, 10, 18, 20), 500, 550, 570, 1000, 1200, 1100, 100, 90, 60, 0.6, 0.65, 0.77),
-    (datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
-    (datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
-]
-
-# Function to create plots
-def create_plots(points):
-    num_plots = len(points) // 3  # Adjust this based on your requirement
-
-    for i in range(num_plots):
-        start_index = i * 3
-        end_index = (i + 1) * 3
-        subset = points[start_index:end_index]
-
-        # Extracting datetime and y values
-        datetimes, *y_values = zip(*subset)
-
-        # Creating plot
-        st.subheader(f'Plot {i + 1}')
-        fig, ax = plt.subplots()
-        for j, y_set in enumerate(y_values):
-            ax.plot(datetimes, y_set, marker='o', label=f'Set {j + 1}')
-
-        plt.xlabel('Datetime')
-        plt.ylabel('Values')
-        plt.xticks(rotation=45)
-        plt.legend()
-        st.pyplot(fig)
-
-# Streamlit UI
-st.title('Interactive Plots with Streamlit')
-create_plots(points)
+    import matplotlib.pyplot as plt
+    from datetime import datetime
+    
+    # Sample datapoints (replace this with your actual datapoints)
+    points = [
+        (datetime(2023, 1, 25, 10, 18, 20), 500, 550, 570, 1000, 1200, 1100, 100, 90, 60, 0.6, 0.65, 0.77),
+        (datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
+        (datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
+    ]
+    
+    # Function to create plots
+    def create_plots(points):
+        num_plots = len(points) // 3  # Adjust this based on your requirement
+    
+        for i in range(num_plots):
+            start_index = i * 3
+            end_index = (i + 1) * 3
+            subset = points[start_index:end_index]
+    
+            # Extracting datetime and y values
+            datetimes, *y_values = zip(*subset)
+    
+            # Creating plot
+            st.subheader(f'Plot {i + 1}')
+            fig, ax = plt.subplots()
+            for j, y_set in enumerate(y_values):
+                ax.plot(datetimes, y_set, marker='o', label=f'Set {j + 1}')
+    
+            plt.xlabel('Datetime')
+            plt.ylabel('Values')
+            plt.xticks(rotation=45)
+            plt.legend()
+            st.pyplot(fig)
+    
+    # Streamlit UI
+    st.title('Interactive Plots with Streamlit')
+    create_plots(points)
 
 
 
