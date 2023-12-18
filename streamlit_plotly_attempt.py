@@ -89,8 +89,6 @@ if boolean_decision:
             fig = px.line(df, x='Datetime', y=['Set 1', 'Set 2', 'Set 3'], markers=True)
             st.plotly_chart(fig)
 
-    create_plotly_express_plots(points)
-
 else:
     placeholder = st.empty()
     col1, col2, col3 = st.columns(3)
