@@ -77,24 +77,24 @@ if boolean_decision:
 
 
     ######################################################################################## Temporary workstation
-    # Sample data
-    x_values = np.array([1, 2, 3, 4, 5])
-    y_values = x_values ** 2  # Example: y = x^2
+    # # Sample data
+    # x_values = np.array([1, 2, 3, 4, 5])
+    # y_values = x_values ** 2  # Example: y = x^2
     
-    # Plotting the line graph
-    fig, ax = plt.subplots()
-    ax.plot(x_values, y_values, marker='o', linestyle='-', color='b', label='Data Points')
+    # # Plotting the line graph
+    # fig, ax = plt.subplots()
+    # ax.plot(x_values, y_values, marker='o', linestyle='-', color='b', label='Data Points')
     
-    # Adding labels and title
-    ax.set_xlabel('X-axis Label')
-    ax.set_ylabel('Y-axis Label')
-    ax.set_title('Simple Line Graph')
+    # # Adding labels and title
+    # ax.set_xlabel('X-axis Label')
+    # ax.set_ylabel('Y-axis Label')
+    # ax.set_title('Simple Line Graph')
     
-    # Adding legend
-    ax.legend()
+    # # Adding legend
+    # ax.legend()
     
-    # Display the plot using Streamlit
-    st.pyplot(fig)
+    # # Display the plot using Streamlit
+    # st.pyplot(fig)
     ###################################################################################### 
 
 
