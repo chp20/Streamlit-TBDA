@@ -85,8 +85,8 @@ if boolean_decision:
         plot_df = pd.DataFrame(plot_points, columns=["datetime", "val1", "val2", "val3", "val4", "val5", "val6",
                                                      "val7", "val8", "val9", "val10", "val11", "val12"])
 
-        # Create a scatter plot for each set of three lines
-        fig = px.scatter(plot_df, x='datetime', y=['val2', 'val3', 'val4'])
+        # Create a line plot for each set of three lines
+        fig = px.line(plot_df, x='datetime', y=['val2', 'val3', 'val4'], markers=True)
         st.plotly_chart(fig)
 
 else:
