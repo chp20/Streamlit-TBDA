@@ -63,32 +63,92 @@ if boolean_decision:
         fig2.update_layout(title_text='Gantt Chart with Final Values')
         st.plotly_chart(fig2)
 
-    st.subheader("Plots of First Three, Second Three, Third Three, and Fourth Three Sets")
 
-    # Replace this placeholder with your actual data
+    ###########################################################
+    #final step
+    #parse the points based on interval and then use index 0 to append relevant points to the list points:
+    #do the parsing by an if and statement for begin and end points new one, enable it by first: choose what values: then choose what interval date: then parse 
+    ############################################################
+    
+    
     points = [
         (dt.datetime(2023, 1, 25, 10, 18, 20), 500, 550, 570, 1000, 1200, 1100, 100, 90, 60, 0.6, 0.65, 0.77),
         (dt.datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
         (dt.datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
     ]
+    
+    gnull = []
+    gone = []
+    gtwo = []
+    mnull = []
+    mone = []
+    mtwo = []
+    snull=[]
+    sone=[]
+    stwo=[]
+    anull = []
+    aone = []
+    atwo = []
 
-    # Extracting data from the 'points' list
-    plot_data = {
-        "Plot 1": points[0:3],
-        "Plot 2": points[3:6],
-        "Plot 3": points[6:9],
-        "Plot 4": points[9:]
+    i = 0
+    while i < len(points):
+        gnull.append(points[i][1])
+        gone.append(points[i][2])
+        gtwo.append(points[i][3])
+        mnull.append(points[i][4])
+        mone.append(points[i][5])
+        mtwo.append(points[i][6])
+        snull.append(points[i][7])
+        sone.append(points[i][8])
+        stwo.append(points[i][9])
+        anull.append(points[i][10])
+        aone.append(points[i][11])
+        atwo.append(points[i][12])
+        i+=1
+    
+
+    # Assuming all lists have the same length
+    data = {
+        'gnull': gnull,
+        'gone': gone,
+        'gtwo': gtwo,
+        'mnull': mnull,
+        'mone': mone,
+        'mtwo': mtwo,
+        'snull': snull,
+        'sone': sone,
+        'stwo': stwo,
+        'anull': anull,
+        'aone': aone,
+        'atwo': atwo,
     }
     
-    for i, (plot_title, plot_points) in enumerate(plot_data.items(), start=1):
-        st.subheader(plot_title)
-        plot_df = pd.DataFrame(plot_points, columns=["datetime", "val1", "val2", "val3", "val4", "val5", "val6",
-                                                     "val7", "val8", "val9", "val10", "val11", "val12"])
-
-        # Create a line plot for each set of three lines
-        fig = px.line(plot_df, x='datetime', y=['val2', 'val3', 'val4'], markers=True)
+    df = pd.DataFrame(data)
+    
+    # Streamlit app
+    st.title('Database Plots')
+    
+    # Plotting function
+    def plot_line_chart(dataframe, columns, title):
+        fig = px.line(dataframe, x=dataframe.index, y=columns, labels={'index': 'Data Point', 'value': 'Value'})
+        fig.update_layout(title=title)
         st.plotly_chart(fig)
-
+    
+    # Plot for gnull, gone, and gtwo
+    st.subheader('Plot for gnull, gone, and gtwo')
+    plot_line_chart(df[['gnull', 'gone', 'gtwo']], ['gnull', 'gone', 'gtwo'], 'gnull, gone, and gtwo Plot')
+    
+    # Plot for mnull, mone, and mtwo
+    st.subheader('Plot for mnull, mone, and mtwo')
+    plot_line_chart(df[['mnull', 'mone', 'mtwo']], ['mnull', 'mone', 'mtwo'], 'mnull, mone, and mtwo Plot')
+    
+    # Plot for snull, sone, and stwo
+    st.subheader('Plot for snull, sone, and stwo')
+    plot_line_chart(df[['snull', 'sone', 'stwo']], ['snull', 'sone', 'stwo'], 'snull, sone, and stwo Plot')
+    
+    # Plot for anull, aone, and atwo
+    st.subheader('Plot for anull, aone, and atwo')
+    plot_line_chart(df[['anull', 'aone', 'atwo']], ['anull', 'aone', 'atwo'], 'anull, aone, and atwo Plot')
 else:
     placeholder = st.empty()
     col1, col2, col3 = st.columns(3)
