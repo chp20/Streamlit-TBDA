@@ -63,6 +63,13 @@ if boolean_decision:
         fig2.update_layout(title_text='Gantt Chart with Final Values')
         st.plotly_chart(fig2)
 
+
+    ###########################################################
+    #final step
+    #parse the points based on interval and then use index 0 to append relevant points to the list points:
+    #do the parsing by an if and statement for begin and end points new one, enable it by first: choose what values: then choose what interval date: then parse 
+    ############################################################
+    
     
     points = [
         (dt.datetime(2023, 1, 25, 10, 18, 20), 500, 550, 570, 1000, 1200, 1100, 100, 90, 60, 0.6, 0.65, 0.77),
