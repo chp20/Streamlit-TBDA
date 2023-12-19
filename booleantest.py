@@ -35,12 +35,18 @@ if boolean_decision2:
                         m_bool = st.checkbox('m_values')
 
 
-points = [
+points1 = [
         (dt.datetime(2023, 1, 25, 10, 18, 20), 500, 550, 570, 1000, 1200, 1100, 100, 90, 60, 0.6, 0.65, 0.77),
         (dt.datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
         (dt.datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
     ]
-    
+
+points = []
+for x in points1:
+        if final_date_begin_values <= x[1] <= final_date_end_values:
+            points.append()
+
+
 gnull = []
 gone = []
 gtwo = []
