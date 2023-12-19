@@ -6,21 +6,21 @@ points = [
         (dt.datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
     ]
     
-    gnull = []
-    gone = []
-    gtwo = []
-    mnull = []
-    mone = []
-    mtwo = []
-    snull=[]
-    sone=[]
-    stwo=[]
-    anull = []
-    aone = []
-    atwo = []
+gnull = []
+gone = []
+gtwo = []
+mnull = []
+mone = []
+mtwo = []
+snull=[]
+sone=[]
+stwo=[]
+anull = []
+aone = []
+atwo = []
 
-    i = 0
-    while i < len(points):
+i = 0
+while i < len(points):
         gnull.append(points[i][1])
         gone.append(points[i][2])
         gtwo.append(points[i][3])
@@ -37,7 +37,7 @@ points = [
     
 
     # Assuming all lists have the same length
-    data = {
+data = {
         'gnull': gnull,
         'gone': gone,
         'gtwo': gtwo,
@@ -52,40 +52,40 @@ points = [
         'atwo': atwo,
     }
     
-    df = pd.DataFrame(data)
+df = pd.DataFrame(data)
 
 
-    with st.expander('Values to be plotted'):
+with st.expander('Values to be plotted'):
         S_bool = st.checkbox('S_Values')
         a_bool = st.checkbox('a_values')
         g_bool = st.checkbox('g_values')
         m_bool = st.checkbox('m_values')
 
     # Streamlit app
-    st.title('Database Plots')
+st.title('Database Plots')
     
     # Plotting function
-    def plot_line_chart(dataframe, columns, title):
+def plot_line_chart(dataframe, columns, title):
         fig = px.line(dataframe, x=dataframe.index, y=columns, labels={'index': 'Data Point', 'value': 'Value'})
         fig.update_layout(title=title)
         st.plotly_chart(fig)
 
     # Plot for gnull, gone, and gtwo
-    if g_bool:
+if g_bool:
         st.subheader('Plot for gnull, gone, and gtwo')
         plot_line_chart(df[['gnull', 'gone', 'gtwo']], ['gnull', 'gone', 'gtwo'], 'gnull, gone, and gtwo Plot')
     
     # Plot for mnull, mone, and mtwo
-    if m_bool:
+if m_bool:
         st.subheader('Plot for mnull, mone, and mtwo')
         plot_line_chart(df[['mnull', 'mone', 'mtwo']], ['mnull', 'mone', 'mtwo'], 'mnull, mone, and mtwo Plot')
     
     # Plot for snull, sone, and stwo
-    if S_bool:
+if S_bool:
         st.subheader('Plot for snull, sone, and stwo')
         plot_line_chart(df[['snull', 'sone', 'stwo']], ['snull', 'sone', 'stwo'], 'snull, sone, and stwo Plot')
     
     # Plot for anull, aone, and atwo
-    if a_bool:
+if a_bool:
         st.subheader('Plot for anull, aone, and atwo')
         plot_line_chart(df[['anull', 'aone', 'atwo']], ['anull', 'aone', 'atwo'], 'anull, aone, and atwo Plot')
