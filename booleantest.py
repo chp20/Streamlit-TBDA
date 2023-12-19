@@ -3,6 +3,8 @@ import datetime as dt
 import pandas as pd
 import plotly.express as px
 
+final_date_begin_values = None
+final_date_end_values = None
 
 m_bool = False
 g_bool = False
