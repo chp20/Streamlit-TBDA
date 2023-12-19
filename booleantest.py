@@ -98,18 +98,20 @@ def plot_line_chart(dataframe, columns, title):
 if g_bool:
         st.subheader('Plot for gnull, gone, and gtwo')
         plot_line_chart(df[['gnull', 'gone', 'gtwo']], ['gnull', 'gone', 'gtwo'], 'gnull, gone, and gtwo Plot')
-    
+else: 
+        
     # Plot for mnull, mone, and mtwo
 if m_bool:
         st.subheader('Plot for mnull, mone, and mtwo')
         plot_line_chart(df[['mnull', 'mone', 'mtwo']], ['mnull', 'mone', 'mtwo'], 'mnull, mone, and mtwo Plot')
-    
+else:    
     # Plot for snull, sone, and stwo
 if S_bool:
         st.subheader('Plot for snull, sone, and stwo')
         plot_line_chart(df[['snull', 'sone', 'stwo']], ['snull', 'sone', 'stwo'], 'snull, sone, and stwo Plot')
-    
+else:
     # Plot for anull, aone, and atwo
 if a_bool:
         st.subheader('Plot for anull, aone, and atwo')
         plot_line_chart(df[['anull', 'aone', 'atwo']], ['anull', 'aone', 'atwo'], 'anull, aone, and atwo Plot')
+else:
