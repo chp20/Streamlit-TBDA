@@ -178,3 +178,7 @@ else:
     # Plot for anull, aone, and atwo
     if a_bool:
         plot_line_chart(df[['anull', 'aone', 'atwo']], ['anull', 'aone', 'atwo'], 'a0, a1, and a2 Plot')
+
+
+
+example_data_remote = [11,12,13,14]
