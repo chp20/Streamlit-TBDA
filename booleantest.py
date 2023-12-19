@@ -98,7 +98,7 @@ df = pd.DataFrame(data)
 
 
     # Streamlit app
-if S_bool:
+if S_bool or g_bool or m_bool or a_bool:
         st.title('Database Plots')
 
         
