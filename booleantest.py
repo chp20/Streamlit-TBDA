@@ -1,6 +1,6 @@
 import streamlit as st
 
-col1 = st.columns(1)
+col1 = st.column(1)
 with col1:
   with st.expander('Values to be plotted'):
     S_bool = st.checkbox('S_Values')
