@@ -2,7 +2,7 @@ import streamlit as st
 import datetime as dt
 import pandas as pd
 import plotly.express as px
-from booleantest_try.py import example_data_remote
+from booleantest_try import example_data_remote
 
 st.write(example_data_remote)
 
