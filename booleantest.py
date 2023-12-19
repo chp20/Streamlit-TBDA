@@ -112,7 +112,7 @@ def plot_line_chart(dataframe, columns, title):
     # Plot for gnull, gone, and gtwo
 if g_bool:
         st.subheader('Plot for g0, g1, and g2')
-        plot_line_chart(df[['gnull', 'gone', 'gtwo']], ['gnull', 'gone', 'gtwo'], 'gnull, gone, and gtwo Plot')
+        plot_line_chart(df[['gnull', 'gone', 'gtwo']], ['g0', 'g1', 'g2'])
 
         
     # Plot for mnull, mone, and mtwo
