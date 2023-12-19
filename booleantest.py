@@ -41,9 +41,9 @@ if boolean_decision2:
                         a_bool = st.checkbox('a_values')
                         g_bool = st.checkbox('g_values')
                         m_bool = st.checkbox('m_values')
-# for x in points_raw:
-#         if final_date_begin_values <= x[1] <= final_date_end_values:
-#                 points.append(x)
+for x in points_raw:
+        if final_date_begin_values <= x[1] <= final_date_end_values:
+                points.append(x)
 
 gnull = []
 gone = []
