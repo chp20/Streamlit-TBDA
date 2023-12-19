@@ -3,6 +3,12 @@ import datetime as dt
 import pandas as pd
 import plotly.express as px
 
+
+m_bool = False
+g_bool = False
+S_bool = False
+a_bool = False
+
 boolean_decision2 = st.checkbox('Allow me to enter final dates for dataplot')
 
 if boolean_decision2:      
