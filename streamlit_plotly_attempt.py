@@ -105,7 +105,6 @@ if boolean_decision:
 
     #parse the points based on interval and then use index 0 to append relevant points to the list points:
     #do the parsing by an if and statement for begin and end points new one, enable it by first: choose what values: then choose what interval date: then parse 
-    ############################################################
     
     
     points = [
