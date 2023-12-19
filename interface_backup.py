@@ -4,6 +4,11 @@ import mysql.connector
 import plotly.express as px
 import pandas as pd
 
+m_bool = False
+g_bool = False
+S_bool = False
+a_bool = False
+
 # Streamlit UI
 st.title('Interactive Plots with Streamlit')
 
@@ -64,48 +69,47 @@ if boolean_decision:
         st.plotly_chart(fig2)
 
 
-    ###########################################################
+  
     #final step
 
-    # boolean_decision2 = st.checkbox('Allow me to enter final dates for dataplot')
+    boolean_decision2 = st.checkbox('Allow me to enter final dates for dataplot')
     
-    # if boolean_decision2:
-    #     final_col1, final_col2 = st.columns(2)
-    #     with final_col1:
-    #         with st.expander('Definitive begin date'):
-    #             final_begin_date_values = st.date_input('Give your begin date final values:', key="final_begin_date_values")
-    #             final_begin_time_values = st.time_input('Begin time final values:', key="final_begin_time_values")
+    if boolean_decision2:
+        final_col1, final_col2 = st.columns(2)
+        with final_col1:
+            with st.expander('Definitive begin date'):
+                final_begin_date_values = st.date_input('Give your begin date final values:', key="final_begin_date_values")
+                final_begin_time_values = st.time_input('Begin time final values:', key="final_begin_time_values")
     
-    #     with final_col2:
-    #         with st.expander('Definitive final date'):
-    #             final_end_date_values = st.date_input('Give your final date:', key="final_end_date_values")
-    #             final_end_time_values = st.time_input('Final time:', key="final_end_time_values")
+        with final_col2:
+            with st.expander('Definitive final date'):
+                final_end_date_values = st.date_input('Give your final date:', key="final_end_date_values")
+                final_end_time_values = st.time_input('Final time:', key="final_end_time_values")
     
-    #     final_date_begin_values = dt.datetime.combine(final_begin_date_values, final_begin_time_values)
-    #     final_date_end_values = dt.datetime.combine(final_end_date_values, final_end_time_values)
+        final_date_begin_values = dt.datetime.combine(final_begin_date_values, final_begin_time_values)
+        final_date_end_values = dt.datetime.combine(final_end_date_values, final_end_time_values)
         
-    # connection = mysql.connector.connect(
-    #     host="apiivm78.etsii.upm.es",
-    #     user="TBDA",
-    #     password="UPM#2324",
-    #     database="sclerosisTBDA"
-    # )
+    connection = mysql.connector.connect(
+        host="apiivm78.etsii.upm.es",
+        user="TBDA",
+        password="UPM#2324",
+        database="sclerosisTBDA"
+    )
 
-    # mycursor = connection.cursor()
-    # qry = "select * FROM `actividad-G02`"
-    # mycursor.execute(qry)
-    # rows = mycursor.fetchall()
+    mycursor = connection.cursor()
+    qry = "select * FROM `actividad-G02`"
+    mycursor.execute(qry)
+    rows = mycursor.fetchall()
 
-    # data_with_smga = []
+    data_with_smga = []
 
     
-    # for x in rows:
-    #     if final_date_begin_values <= x[1] <= date_end:
-    #         data_with_smga.append()
+    for x in rows:
+        if final_date_begin_values <= x[1] <= final_date_end_values:
+            data_with_smga.append()
 
     #parse the points based on interval and then use index 0 to append relevant points to the list points:
     #do the parsing by an if and statement for begin and end points new one, enable it by first: choose what values: then choose what interval date: then parse 
-    ############################################################
     
     
     points = [
@@ -128,19 +132,19 @@ if boolean_decision:
     atwo = []
 
     i = 0
-    while i < len(points):
-        gnull.append(points[i][1])
-        gone.append(points[i][2])
-        gtwo.append(points[i][3])
-        mnull.append(points[i][4])
-        mone.append(points[i][5])
-        mtwo.append(points[i][6])
-        snull.append(points[i][7])
-        sone.append(points[i][8])
-        stwo.append(points[i][9])
-        anull.append(points[i][10])
-        aone.append(points[i][11])
-        atwo.append(points[i][12])
+    while i < len(data_with_smga):
+        gnull.append(data_with_smga[i][1])
+        gone.append(data_with_smga[i][2])
+        gtwo.append(data_with_smga[i][3])
+        mnull.append(data_with_smga[i][4])
+        mone.append(data_with_smga[i][5])
+        mtwo.append(data_with_smga[i][6])
+        snull.append(data_with_smga[i][7])
+        sone.append(data_with_smga[i][8])
+        stwo.append(data_with_smga[i][9])
+        anull.append(data_with_smga[i][10])
+        aone.append(data_with_smga[i][11])
+        atwo.append(data_with_smga[i][12])
         i+=1
     
 
@@ -161,7 +165,14 @@ if boolean_decision:
     }
     
     df = pd.DataFrame(data)
-    
+
+
+    with st.expander('Values to be plotted'):
+        S_bool = st.checkbox('S_Values')
+        a_bool = st.checkbox('a_values')
+        g_bool = st.checkbox('g_values')
+        m_bool = st.checkbox('m_values')
+
     # Streamlit app
     st.title('Database Plots')
     
@@ -170,25 +181,31 @@ if boolean_decision:
         fig = px.line(dataframe, x=dataframe.index, y=columns, labels={'index': 'Data Point', 'value': 'Value'})
         fig.update_layout(title=title)
         st.plotly_chart(fig)
-    
+
     # Plot for gnull, gone, and gtwo
-    st.subheader('Plot for gnull, gone, and gtwo')
-    plot_line_chart(df[['gnull', 'gone', 'gtwo']], ['gnull', 'gone', 'gtwo'], 'gnull, gone, and gtwo Plot')
+    if g_bool:
+        st.subheader('Plot for gnull, gone, and gtwo')
+        plot_line_chart(df[['gnull', 'gone', 'gtwo']], ['gnull', 'gone', 'gtwo'], 'gnull, gone, and gtwo Plot')
     
     # Plot for mnull, mone, and mtwo
-    st.subheader('Plot for mnull, mone, and mtwo')
-    plot_line_chart(df[['mnull', 'mone', 'mtwo']], ['mnull', 'mone', 'mtwo'], 'mnull, mone, and mtwo Plot')
+    if m_bool:
+        st.subheader('Plot for mnull, mone, and mtwo')
+        plot_line_chart(df[['mnull', 'mone', 'mtwo']], ['mnull', 'mone', 'mtwo'], 'mnull, mone, and mtwo Plot')
     
     # Plot for snull, sone, and stwo
-    st.subheader('Plot for snull, sone, and stwo')
-    plot_line_chart(df[['snull', 'sone', 'stwo']], ['snull', 'sone', 'stwo'], 'snull, sone, and stwo Plot')
+    if S_bool:
+        st.subheader('Plot for snull, sone, and stwo')
+        plot_line_chart(df[['snull', 'sone', 'stwo']], ['snull', 'sone', 'stwo'], 'snull, sone, and stwo Plot')
     
     # Plot for anull, aone, and atwo
-    st.subheader('Plot for anull, aone, and atwo')
-    plot_line_chart(df[['anull', 'aone', 'atwo']], ['anull', 'aone', 'atwo'], 'anull, aone, and atwo Plot')
+    if a_bool:
+        st.subheader('Plot for anull, aone, and atwo')
+        plot_line_chart(df[['anull', 'aone', 'atwo']], ['anull', 'aone', 'atwo'], 'anull, aone, and atwo Plot')
+
+
 else:
     placeholder = st.empty()
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
 
     with col1:
         with st.expander('Begin date'):
@@ -199,13 +216,6 @@ else:
         with st.expander('Final date'):
             final_date = st.date_input('Give your final date:')
             final_time = st.time_input('Final time:')
-
-    with col3:
-        with st.expander('Values to be plotted'):
-            S_bool = st.checkbox('S_Values')
-            a_bool = st.checkbox('a_values')
-            g_bool = st.checkbox('g_values')
-            m_bool = st.checkbox('m_values')
 
     date_begin = dt.datetime.combine(begin_date, begin_time)
     date_end = dt.datetime.combine(final_date, final_time)
@@ -239,6 +249,6 @@ else:
         connection.commit()
         mycursor.close()
         connection.close()
-        fig = px.scatter(df, x='datetime', y='unitless_y')
-        fig.update_yaxes(title_text='')
-        st.plotly_chart(fig)
+        fig3 = px.scatter(df, x='datetime', y='unitless_y')
+        fig3.update_yaxes(title_text='')
+        st.plotly_chart(fig3)
