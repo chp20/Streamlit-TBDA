@@ -18,6 +18,8 @@ points_raw = [
         (dt.datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
         (dt.datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
     ]
+for x in points_raw:
+        st.write(x[0])
 points = [    ]
 if boolean_decision2:      
         final_col1, final_col2 = st.columns(2)
