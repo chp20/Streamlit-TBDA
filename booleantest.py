@@ -1,19 +1,19 @@
 import streamlit as st
 
 col1 = st.column(1)
+
 with col1:
-  with st.expander('Values to be plotted'):
-    S_bool = st.checkbox('S_Values')
-    a_bool = st.checkbox('a_values')
-    g_bool = st.checkbox('g_values')
-    m_bool = st.checkbox('m_values')
+    with st.expander('Values to be plotted'):
+        S_bool = st.checkbox('S_Values')
+        a_bool = st.checkbox('a_values')
+        g_bool = st.checkbox('g_values')
+        m_bool = st.checkbox('m_values')
 
 if S_bool:
-  st.write('Sbool')
+    st.write('Sbool')
 if a_bool:
-  st.write('abool')
+    st.write('abool')
 if g_bool:
-  st.write('gbool')
+    st.write('gbool')
 if m_bool:
-  st.write('mbool')
-  
+    st.write('mbool')
