@@ -24,7 +24,7 @@ points = []
 checkdata = []
 
 boolean_decision = st.checkbox('Allow me to enter final dates for quality of walking plot')
-boolean_decision2 = st.checkbox('Allow me to enter final dates for dataplot')
+
 
 if boolean_decision:
     final_col1, final_col2 = st.columns(2)
@@ -78,6 +78,8 @@ if boolean_decision:
                            color_continuous_scale=[(0, "red"), (1, "green")])
         fig2.update_layout(title_text='Gantt Chart with Final Values')
         st.plotly_chart(fig2)
+
+boolean_decision2 = st.checkbox('Allow me to enter final dates for dataplot')
 
 if boolean_decision2:
     final_col1, final_col2 = st.columns(2)
