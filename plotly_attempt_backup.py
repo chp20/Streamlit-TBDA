@@ -66,6 +66,43 @@ if boolean_decision:
 
     ###########################################################
     #final step
+
+    # boolean_decision2 = st.checkbox('Allow me to enter final dates for dataplot')
+    
+    # if boolean_decision2:
+    #     final_col1, final_col2 = st.columns(2)
+    #     with final_col1:
+    #         with st.expander('Definitive begin date'):
+    #             final_begin_date_values = st.date_input('Give your begin date final values:', key="final_begin_date_values")
+    #             final_begin_time_values = st.time_input('Begin time final values:', key="final_begin_time_values")
+    
+    #     with final_col2:
+    #         with st.expander('Definitive final date'):
+    #             final_end_date_values = st.date_input('Give your final date:', key="final_end_date_values")
+    #             final_end_time_values = st.time_input('Final time:', key="final_end_time_values")
+    
+    #     final_date_begin_values = dt.datetime.combine(final_begin_date_values, final_begin_time_values)
+    #     final_date_end_values = dt.datetime.combine(final_end_date_values, final_end_time_values)
+        
+    # connection = mysql.connector.connect(
+    #     host="apiivm78.etsii.upm.es",
+    #     user="TBDA",
+    #     password="UPM#2324",
+    #     database="sclerosisTBDA"
+    # )
+
+    # mycursor = connection.cursor()
+    # qry = "select * FROM `actividad-G02`"
+    # mycursor.execute(qry)
+    # rows = mycursor.fetchall()
+
+    # data_with_smga = []
+
+    
+    # for x in rows:
+    #     if final_date_begin_values <= x[1] <= date_end:
+    #         data_with_smga.append()
+
     #parse the points based on interval and then use index 0 to append relevant points to the list points:
     #do the parsing by an if and statement for begin and end points new one, enable it by first: choose what values: then choose what interval date: then parse 
     ############################################################
