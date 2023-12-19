@@ -111,21 +111,17 @@ def plot_line_chart(dataframe, columns, title):
 
     # Plot for gnull, gone, and gtwo
 if g_bool:
-        st.subheader('Plot for g0, g1, and g2')
         plot_line_chart(df[['gnull', 'gone', 'gtwo']], ['gnull', 'gone', 'gtwo'], 'g0, g1 and g2 plot')
 
         
     # Plot for mnull, mone, and mtwo
 if m_bool:
-        st.subheader('Plot for m0, m1, and m2')
-        plot_line_chart(df[['mnull', 'mone', 'mtwo']], ['mnull', 'mone', 'mtwo'], 'mnull, mone, and mtwo Plot')
+        plot_line_chart(df[['mnull', 'mone', 'mtwo']], ['mnull', 'mone', 'mtwo'], 'm0, m1, and m2 Plot')
  
     # Plot for snull, sone, and stwo
 if S_bool:
-        st.subheader('Plot for s0, s1, and s2')
-        plot_line_chart(df[['snull', 'sone', 'stwo']], ['snull', 'sone', 'stwo'], 'snull, sone, and stwo Plot')
+        plot_line_chart(df[['snull', 'sone', 'stwo']], ['snull', 'sone', 'stwo'], 'S0, S1, and S2 Plot')
 
     # Plot for anull, aone, and atwo
 if a_bool:
-        st.subheader('Plot for a0, a1, and a2')
-        plot_line_chart(df[['anull', 'aone', 'atwo']], ['anull', 'aone', 'atwo'], 'anull, aone, and atwo Plot')
+        plot_line_chart(df[['anull', 'aone', 'atwo']], ['anull', 'aone', 'atwo'], 'a0, a1, and a2 Plot')
