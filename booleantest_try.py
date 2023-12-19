@@ -3,7 +3,7 @@ import datetime as dt
 import pandas as pd
 import plotly.express as px
 
-boolean_decision2 = st.checkbox('Allow me to enter final dates for dataplot')
+
 
 final_date_begin_values = dt.datetime(2023,1,1)
 final_date_end_values = dt.datetime(2023,12,30)
@@ -22,7 +22,9 @@ points_raw = [
 points = []
 checkdata = []
 
-boolean_decision = st.checkbox('Allow me to enter final dates')
+boolean_decision = st.checkbox('Allow me to enter final dates for quality of walking plot')
+boolean_decision2 = st.checkbox('Allow me to enter final dates for dataplot')
+
 
 if boolean_decision:
     final_col1, final_col2 = st.columns(2)
