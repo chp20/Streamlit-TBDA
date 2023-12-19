@@ -48,7 +48,7 @@ points = [x for x in points1 if final_date_begin_values <= x[0] <= final_date_en
 
 # Extract data for plotting
 if points:
-    gnull, gone, gtwo, mnull, mone, mtwo, snull, sone, stwo, anull, aone, atwo = zip(*points)
+    gnull, gone, gtwo, mnull, mone, mtwo, snull, sone, stwo, anull, aone, atwo = zip(*zip(*points1))
     # Assuming all lists have the same length
     data = {
         'gnull': gnull,
