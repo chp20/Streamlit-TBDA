@@ -66,6 +66,8 @@ if boolean_decision:
         ticker += 1
 
     carrierdf = pd.DataFrame(checkdata_carrier)
+    if carrierdf.empty: 
+            st.warning('no data available in chosen interval')
 
     if carrierdf.empty:
         st.warning("No data available for the selected time range.")
