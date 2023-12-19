@@ -12,7 +12,7 @@ a_bool = False
 # Streamlit UI
 st.title('Interactive Plots with Streamlit')
 
-boolean_decision = st.checkbox('Allow me to enter final dates for quality of walking plot')
+boolean_decision = st.checkbox('Allow me to enter final dates')
 
 if boolean_decision:
     final_col1, final_col2 = st.columns(2)
