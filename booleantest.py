@@ -5,8 +5,8 @@ import plotly.express as px
 
 boolean_decision2 = st.checkbox('Allow me to enter final dates for dataplot')
 
-final_date_begin_values = None
-final_date_end_values = None
+final_date_begin_values = dt.datetime(2023,1,1)
+final_date_end_values = dt.datetime(2023,12,30)
 
 g_bool = False
 m_bool = False
