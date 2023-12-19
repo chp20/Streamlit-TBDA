@@ -94,8 +94,10 @@ df = pd.DataFrame(data)
 
 
     # Streamlit app
-st.title('Database Plots')
-    
+if S_bool or g_bool or a_bool or m_bool:
+        st.title('Database Plots')
+
+        
     # Plotting function
 def plot_line_chart(dataframe, columns, title):
         fig = px.line(dataframe, x=dataframe.index, y=columns, labels={'index': 'Data Point', 'value': 'Value'})
