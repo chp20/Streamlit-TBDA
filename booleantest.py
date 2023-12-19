@@ -9,6 +9,14 @@ def plot_line_chart(dataframe, columns, title):
     fig.update_layout(title=title)
     st.plotly_chart(fig)
 
+def filter_data_by_date_range(data, date_begin, date_end):
+    filtered_data = []
+    for x in data:
+        x_datetime = dt.datetime.strptime(x[4], '%Y-%m-%d %H:%M:%S')
+        if date_begin <= x_datetime <= date_end:
+            filtered_data.append({'datetime': x_datetime, 'time': x[5]})
+    return filtered_data
+    
 final_date_begin_values = dt.datetime(2023, 1, 1)
 final_date_end_values = dt.datetime(2023, 12, 30)
 g_bool = False
