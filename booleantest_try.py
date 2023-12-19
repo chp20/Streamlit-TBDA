@@ -19,7 +19,60 @@ points_raw = [
         (dt.datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
     ]
 
-points = [    ]
+points = []
+checkdata = []
+
+boolean_decision = st.checkbox('Allow me to enter final dates')
+
+if boolean_decision:
+    final_col1, final_col2 = st.columns(2)
+
+    with final_col1:
+        with st.expander('Definitive begin date'):
+            final_begin_date = st.date_input('Give your begin date:', key="final_begin_date")
+            final_begin_time = st.time_input('Begin time:', key="final_begin_time")
+
+    with final_col2:
+        with st.expander('Definitive final date'):
+            final_end_date = st.date_input('Give your final date:', key="final_end_date")
+            final_end_time = st.time_input('Final time:', key="final_end_time")
+
+    final_date_begin = dt.datetime.combine(final_begin_date, final_begin_time)
+    final_date_end = dt.datetime.combine(final_end_date, final_end_time)
+
+    rows =[
+    [5, '2023-01-25 10:15:01', '2023-01-25 10:17:30', 0.7],
+    [6, '2023-01-25 10:18:20', '2023-01-25 10:20:40', 0.75],
+    [7, '2023-01-25 10:22:05', '2023-01-25 10:23:15', 0.88],
+    [8, '2023-01-25 10:23:30', '2023-01-25 10:25:10', 0.8],
+    [9, '2023-01-25 10:27:12', '2023-01-25 10:28:19', 0.74],
+    [10, '2023-01-25 10:29:44', '2023-01-25 10:33:11', 0.69],
+    [11, '2023-01-25 10:35:25', '2023-01-25 10:38:55', 0.6]
+]
+
+
+    for x in rows:
+        if final_date_begin <= x[1] and final_date_end >= x[2]:
+            checkdata.append(x)
+
+    ticker = 0
+    checkdata_carrier = []
+
+    while ticker < len(checkdata):
+        checkdata_carrier.append({"Start": checkdata[ticker][1], "Finish": checkdata[ticker][2],
+                                  "Final_Value": checkdata[ticker][3]})
+        ticker += 1
+
+    carrierdf = pd.DataFrame(checkdata_carrier)
+
+    if carrierdf.empty:
+        st.warning("No data available for the selected time range.")
+    else:
+        fig2 = px.timeline(carrierdf, x_start="Start", x_end="Finish", y="Final_Value", color="Final_Value",
+                           color_continuous_scale=[(0, "red"), (1, "green")])
+        fig2.update_layout(title_text='Gantt Chart with Final Values')
+        st.plotly_chart(fig2)
+
 if boolean_decision2:      
         final_col1, final_col2 = st.columns(2)
         with final_col1:
