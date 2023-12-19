@@ -210,7 +210,7 @@ else:
     dataa = []
 
     for x in data_mdb:
-        x_datetime = dt.datetime.strptime(x[4], '%Y-%m-%d %H:%M:%S')
+        x_datetime = dt.datetime.strptime(x[4], '%Y-%m-%d %H:%M:%S.%f')
         if date_begin <= x_datetime <= date_end:
             dataa.append({'datetime': x[4], 'time': x[5]})
 
