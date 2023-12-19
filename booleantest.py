@@ -210,8 +210,9 @@ else:
     dataa = []
 
     for x in data_mdb:
-        x_datetime = dt.datetime.strptime(x[4], '%Y-%m-%d %H:%M:%S.%f')
-        if date_begin <= x_datetime <= date_end:
+        x_datetimefour = dt.datetime.strptime(x[4], '%Y-%m-%d %H:%M:%S.%f')
+        x_datetimefive = dt.datetime.strptime(x[5], '%Y-%m-%d %H:%M:%S.%f')
+        if date_begin <= x_datetimefour and x_datetimefive <= date_end:
             dataa.append({'datetime': x[4], 'time': x[5]})
 
     dff = pd.DataFrame(dataa)
