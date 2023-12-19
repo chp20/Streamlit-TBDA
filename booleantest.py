@@ -3,6 +3,23 @@ import datetime as dt
 import pandas as pd
 import plotly.express as px
 
+boolean_decision2 = st.checkbox('Allow me to enter final dates for dataplot')
+
+if boolean_decision2:      
+        final_col1, final_col2 = st.columns(2)
+        with final_col1:
+            with st.expander('Definitive begin date'):
+                final_begin_date_values = st.date_input('Give your begin date final values:', key="final_begin_date_values")
+                final_begin_time_values = st.time_input('Begin time final values:', key="final_begin_time_values")
+    
+        with final_col2:
+            with st.expander('Definitive final date'):
+                final_end_date_values = st.date_input('Give your final date:', key="final_end_date_values")
+                final_end_time_values = st.time_input('Final time:', key="final_end_time_values")
+    
+        final_date_begin_values = dt.datetime.combine(final_begin_date_values, final_begin_time_values)
+        final_date_end_values = dt.datetime.combine(final_end_date_values, final_end_time_values)
+
 points = [
         (dt.datetime(2023, 1, 25, 10, 18, 20), 500, 550, 570, 1000, 1200, 1100, 100, 90, 60, 0.6, 0.65, 0.77),
         (dt.datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
