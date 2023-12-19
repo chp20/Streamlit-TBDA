@@ -27,12 +27,12 @@ if boolean_decision:
     final_col1, final_col2 = st.columns(2)
 
     with final_col1:
-        with st.expander('Definitive begin date'):
+        with st.expander('Definitive begin date (walking quality)'):
             final_begin_date = st.date_input('Give your begin date:', key="final_begin_date")
             final_begin_time = st.time_input('Begin time:', key="final_begin_time")
 
     with final_col2:
-        with st.expander('Definitive final date'):
+        with st.expander('Definitive final date (walking quality)'):
             final_end_date = st.date_input('Give your final date:', key="final_end_date")
             final_end_time = st.time_input('Final time:', key="final_end_time")
 
@@ -66,7 +66,7 @@ if boolean_decision:
 
     carrierdf = pd.DataFrame(checkdata_carrier)
     if carrierdf.empty:
-        st.warning('no data available in chosen interval')
+        st.warning('no data available in chosen interval (walking quality)')
 
     if carrierdf.empty:
         st.warning("No data available for the selected time range.")
