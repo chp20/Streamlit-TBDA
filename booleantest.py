@@ -95,6 +95,8 @@ data = {
     
 df = pd.DataFrame(data)
 
+if df.empty:
+        st.warning('sorry there is no date in this interval')
 
 
     # Streamlit app
