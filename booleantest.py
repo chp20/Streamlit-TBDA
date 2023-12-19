@@ -2,7 +2,7 @@ import streamlit as st
 import datetime as dt
 import pandas as pd
 import plotly.express as px
-
+from data_mariadb import data_mdb
 
 final_date_begin_values = dt.datetime(2023, 1, 1)
 final_date_end_values = dt.datetime(2023, 12, 30)
