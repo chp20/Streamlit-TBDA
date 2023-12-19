@@ -44,7 +44,7 @@ if boolean_decision2:
                         g_bool = st.checkbox('g_values')
                         m_bool = st.checkbox('m_values')
 for x in points_raw:
-        if final_date_begin_values < x[0] < final_date_end_values:
+        if final_date_begin_values <= x[0] <= final_date_end_values:
                 points.append(x)
 
 gnull = []
