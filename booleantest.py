@@ -219,7 +219,7 @@ else:
     if dff.empty:
         st.warning("No data available for the selected time range.")
     else:
-        df['unitless_y'] = range(1, len(df) + 1)
-        fig5 = px.scatter(df, x='datetime', y='unitless_y')
+        dff['unitless_y'] = range(1, len(df) + 1)
+        fig5 = px.scatter(dff, x='datetime', y='unitless_y')
         fig5.update_yaxes(title_text='')
         st.plotly_chart(fig5)
