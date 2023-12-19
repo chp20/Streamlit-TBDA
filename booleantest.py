@@ -5,6 +5,11 @@ import plotly.express as px
 
 boolean_decision2 = st.checkbox('Allow me to enter final dates for dataplot')
 
+g_bool = False
+m_bool = False
+a_bool = False
+S_bool = False
+
 if boolean_decision2:      
         final_col1, final_col2 = st.columns(2)
         with final_col1:
