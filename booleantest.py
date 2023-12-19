@@ -20,6 +20,15 @@ if boolean_decision2:
         final_date_begin_values = dt.datetime.combine(final_begin_date_values, final_begin_time_values)
         final_date_end_values = dt.datetime.combine(final_end_date_values, final_end_time_values)
 
+        boolean_decision3 = st.checkbox('plot the following data')
+        if boolean_decision3:
+                with st.expander('Values to be plotted'):
+                        S_bool = st.checkbox('S_Values')
+                        a_bool = st.checkbox('a_values')
+                        g_bool = st.checkbox('g_values')
+                        m_bool = st.checkbox('m_values')
+
+
 points = [
         (dt.datetime(2023, 1, 25, 10, 18, 20), 500, 550, 570, 1000, 1200, 1100, 100, 90, 60, 0.6, 0.65, 0.77),
         (dt.datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
@@ -75,11 +84,6 @@ data = {
 df = pd.DataFrame(data)
 
 
-with st.expander('Values to be plotted'):
-        S_bool = st.checkbox('S_Values')
-        a_bool = st.checkbox('a_values')
-        g_bool = st.checkbox('g_values')
-        m_bool = st.checkbox('m_values')
 
     # Streamlit app
 st.title('Database Plots')
