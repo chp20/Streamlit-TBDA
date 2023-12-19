@@ -229,7 +229,7 @@ else:
     data = []
 
     for x in rows:
-        if date_begin <= x[4] <= date_end:
+        if date_begin <= x[4] and x[5] <= date_end:
             data.append({'datetime': x[4], 'time': x[5]})
 
     df = pd.DataFrame(data)
