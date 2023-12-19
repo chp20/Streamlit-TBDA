@@ -4,6 +4,11 @@ import mysql.connector
 import plotly.express as px
 import pandas as pd
 
+m_bool = False
+g_bool = False
+S_bool = False
+a_bool = False
+
 # Streamlit UI
 st.title('Interactive Plots with Streamlit')
 
