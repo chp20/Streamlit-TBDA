@@ -10,7 +10,6 @@ def plot_line_chart(dataframe, columns, title):
     st.plotly_chart(fig)
 
 
-    
 final_date_begin_values = dt.datetime(2023, 1, 1)
 final_date_end_values = dt.datetime(2023, 12, 30)
 g_bool = False
