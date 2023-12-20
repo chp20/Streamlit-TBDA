@@ -1,4 +1,9 @@
-import 
+import streamlit as st
+import datetime as dt
+import mysql.connector
+import plotly.express as px
+import pandas as pd
+
 connection = mysql.connector.connect(
         host="apiivm78.etsii.upm.es",
         user="TBDA",
@@ -12,9 +17,8 @@ connection = mysql.connector.connect(
     mycursor.execute(qry)
     rows = mycursor.fetchall()
 
-    for x in rows:
-        if final_date_begin <= x[1] and final_date_end >= x[2]:
-            checkdata.append(x)
+
 
     mycursor.close()
     connection.close()
+st.write(rows)
