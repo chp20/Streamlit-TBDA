@@ -167,7 +167,7 @@ if boolean0:
         # Streamlit app
         if S_bool or g_bool or m_bool or a_bool:
             st.title('Database Plots')
-        ccol1,ccol2,ccol3,ccol4 = st.columns(4)
+        ccol1,ccol2,ccol3,ccol4 = st.beta_columns((1,1,1,2))
         # Plotting function
 
         # Plot for gnull, gone, and gtwo
