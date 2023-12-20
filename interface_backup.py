@@ -39,12 +39,12 @@ if boolean_decision:
 
     checkdata = []
     mycursor = connection.cursor()
-    qry = "select * FROM `Data_sample_Christian`"
+    qry = "select * FROM `Final-G02`"
     mycursor.execute(qry)
     rows = mycursor.fetchall()
 
     for x in rows:
-        if final_date_begin <= x[1] and final_date_end >= x[2]:
+        if final_date_begin <= x[3] and final_date_end >= x[4]:
             checkdata.append(x)
 
     mycursor.close()
@@ -54,8 +54,8 @@ if boolean_decision:
     checkdata_carrier = []
 
     while ticker < len(checkdata):
-        checkdata_carrier.append({"Start": checkdata[ticker][1], "Finish": checkdata[ticker][2],
-                                  "Final_Value": checkdata[ticker][3]})
+        checkdata_carrier.append({"Start": checkdata[ticker][3], "Finish": checkdata[ticker][4],
+                                  "Final_Value": checkdata[ticker][5]})
         ticker += 1
 
     carrierdf = pd.DataFrame(checkdata_carrier)
