@@ -82,8 +82,6 @@ if boolean0:
         if carrierdf.empty:
             st.warning('no data available in the chosen interval (walking quality)')
 
-        if carrierdf.empty:
-            st.warning("No data available for the selected time range.")
         else:
             fig2 = px.timeline(carrierdf, x_start="Start", x_end="Finish", y="Final_Value", color="Final_Value",
                                color_continuous_scale=[(0, "red"), (1, "green")])
