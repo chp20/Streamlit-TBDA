@@ -58,13 +58,8 @@ if boolean0:
         mycursor.execute(qry)
         rows = mycursor.fetchall()
 
-       
-
         for x in rows:
-            x_start = dt.datetime.strptime(x[1], '%Y-%m-%d %H:%M:%S')
-            x_end = dt.datetime.strptime(x[2], '%Y-%m-%d %H:%M:%S')
-
-            if final_date_begin <= x_start and final_date_end >= x_end:
+            if final_date_begin <= x[3] and x[4] <= final_date_end:
                 checkdata.append(x)
         
         mycursor.close()
@@ -114,19 +109,20 @@ if boolean0:
                 g_bool = st.checkbox('g_values')
                 m_bool = st.checkbox('m_values')
 
-    connection = mysql.connector.connect(
-        host="apiivm78.etsii.upm.es",
-        user="TBDA",
-        password="UPM#2324",
-        database="sclerosisTBDA"
-    )
+
+       )
     #final_asgm_values doesnt exist but this would be the list with all the values in it, wasnt able to be created due to time constraints.
     #example of how final_asgm_values would look: points_raw = [
 #     (dt.datetime(2023, 1, 25, 10, 18, 20), 500, 550, 570, 1000, 1200, 1100, 100, 90, 60, 0.6, 0.65, 0.77),
 #     (dt.datetime(2023, 1, 25, 10, 19, 40), 640, 720, 430, 970, 1040, 890, 30, 56, 77, 0.36, 0.78, 0.76),
 #     (dt.datetime(2023, 1, 25, 10, 20, 40), 600, 780, 400, 990, 1050, 850, 50, 66, 67, 0.66, 0.68, 0.73)
 # ]
-    
+    connection = mysql.connector.connect(
+        host="apiivm78.etsii.upm.es",
+        user="TBDA",
+        password="UPM#2324",
+        database="sclerosisTBDA"
+        
     points = []
     checkdata = []
     mycursor = connection.cursor()
