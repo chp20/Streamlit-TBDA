@@ -167,24 +167,28 @@ if boolean0:
         # Streamlit app
         if S_bool or g_bool or m_bool or a_bool:
             st.title('Database Plots')
-
+        ccol1,ccol2,ccol3,ccol4 = st.columns(4)
         # Plotting function
 
         # Plot for gnull, gone, and gtwo
         if g_bool:
-            plot_line_chart(df[['gnull', 'gone', 'gtwo']], ['gnull', 'gone', 'gtwo'], 'g0, g1 and g2 plot')
+            with ccol1:
+                plot_line_chart(df[['gnull', 'gone', 'gtwo']], ['gnull', 'gone', 'gtwo'], 'g0, g1 and g2 plot')
 
         # Plot for mnull, mone, and mtwo
         if m_bool:
-            plot_line_chart(df[['mnull', 'mone', 'mtwo']], ['mnull', 'mone', 'mtwo'], 'm0, m1, and m2 Plot')
+            with ccol2:
+                plot_line_chart(df[['mnull', 'mone', 'mtwo']], ['mnull', 'mone', 'mtwo'], 'm0, m1, and m2 Plot')
 
         # Plot for snull, sone, and stwo
         if S_bool:
-            plot_line_chart(df[['snull', 'sone', 'stwo']], ['snull', 'sone', 'stwo'], 'S0, S1, and S2 Plot')
+            with ccol3:
+                plot_line_chart(df[['snull', 'sone', 'stwo']], ['snull', 'sone', 'stwo'], 'S0, S1, and S2 Plot')
 
         # Plot for anull, aone, and atwo
         if a_bool:
-            plot_line_chart(df[['anull', 'aone', 'atwo']], ['anull', 'aone', 'atwo'], 'a0, a1, and a2 Plot')
+            with ccol4:
+                plot_line_chart(df[['anull', 'aone', 'atwo']], ['anull', 'aone', 'atwo'], 'a0, a1, and a2 Plot')
 else:
     placeholder = st.empty()
     col11, col22 = st.columns(2)
